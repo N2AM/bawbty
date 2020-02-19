@@ -1,0 +1,45 @@
+<div class="container py-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col-md-4" class="font-sf-sb color-7e font-6">
+          Sequence Number
+        </th>
+        <th scope="col-md-4" class="font-sf-sb color-7e font-6">
+          Vehicle Make
+        </th>
+        <th scope="col-md-4" class="font-sf-sb color-7e font-6">
+          Vehicle Model
+        </th>
+        <th scope="col-md-4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of vehicles">
+        <th scope="row">{{ vehicle.VehicleId }}</th>
+        <td>{{ vehicle.VehicleMake }}</td>
+        <td>{{ vehicle.VehicleModel }}</td>
+        <td class="text-center">
+          <button class="btn p-1">
+            <img src="../../../../../assets/icons/edit-ic.svg" alt="" /><span
+              class="color-55 mx-1 font-1"
+              >Edit</span
+            >
+          </button>
+          <button
+            [disabled]="!vehicle.IsInsured"
+            (click)="deleteVehicle(vehicle)"
+            class="btn p-1 mx-3"
+            data-toggle="modal"
+            data-target="#vehicleModal"
+          >
+            <img src="../../../../../assets/icons/delete-ic.svg" alt="" /><span
+              class="err mx-1 font-1"
+              >Delete</span
+            >
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

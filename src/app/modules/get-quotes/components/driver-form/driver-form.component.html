@@ -1,0 +1,303 @@
+<form
+  *ngIf="DriverForm"
+  [formGroup]="DriverForm"
+  class="col-md-12 px-0"
+  (ngSubmit)="submit()"
+>
+  <!-- <div *ngIf="backvalidation" class="col-md-12 alert alert-danger">
+    {{ formError }}
+  </div> -->
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field class="px-4">
+        <input
+          matInput
+          onKeyPress="if(this.value.length==10)return false;"
+          type="number"
+          maxlength="10"
+          id="driver_national_id"
+          formControlName="driver_national_id"
+          placeholder="Driver national ID/Iqama number"
+          (focusout)="dobSelect()"
+        />
+
+        <mat-error *ngIf="f.driver_national_id.errors?.required">
+          Driver national ID/Iqama number is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !f.driver_national_id.errors?.required &&
+            f.driver_national_id.errors?.notequal
+          "
+        >
+          Driver national ID/Iqama number must not be equal to insured
+          <!-- or
+          vehicle owner nation ID -->
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !f.driver_national_id.errors?.required &&
+            f.driver_national_id.errors?.inserted
+          "
+        >
+          Driver national ID/Iqama number already existed
+        </mat-error>
+        <mat-error *ngIf="f.driver_national_id.errors?.pattern">
+          Enter a valid Driver national ID/Iqama number
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !f.driver_national_id.errors?.pattern &&
+            f.driver_national_id.errors?.min
+          "
+        >
+          Driver national ID/Iqama number must not be less than 10 numbers
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !f.driver_national_id.errors?.pattern &&
+            f.driver_national_id.errors?.max
+          "
+        >
+          Driver national ID/Iqama number must not exceed 10 numbers
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field class="px-4 col-md-8 col-12">
+        <mat-label>Month of birth</mat-label>
+        <!-- <mat-select formControlName="birthMonth" id="birthMonth"
+              ><mat-option
+                *ngFor="let month of months"
+                [value]="month.key"
+                [id]="month.value"
+                >{{ month.value }} ({{ month.key }})</mat-option
+              ></mat-select
+            > -->
+        <input
+          type="text"
+          placeholder=""
+          matInput
+          max="{{ years[years.length - 1] }}"
+          min="{{ years[0] }}"
+          formControlName="birthMonth"
+          [matAutocomplete]="autoMonth"
+        />
+        <mat-autocomplete #autoMonth="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredMonth | async"
+            [value]="option.key"
+          >
+            {{ option.value }} ({{ option.key }})
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="f.birthMonth.errors?.required">required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="px-4 col-md-4 col-12">
+        <mat-label>Year</mat-label>
+        <input
+          type="number"
+          placeholder=""
+          matInput
+          max="{{ years[years.length - 1] }}"
+          min="{{ years[0] }}"
+          formControlName="birthYear"
+          [matAutocomplete]="auto"
+          onKeyPress="if(this.value.length==4) return false;"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="f.birthYear.errors?.required">required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field class="px-4">
+        <mat-label>Education qualification</mat-label>
+        <mat-select
+          formControlName="Education_qualification"
+          id="driverEducationQualification"
+        >
+          <mat-option
+            *ngFor="
+              let userInfoLookUp of userInfoLookUps.Education_qualification
+            "
+            id="{{ userInfoLookUp.Name }}"
+            value="{{ userInfoLookUp.Id }}"
+            >{{ userInfoLookUp.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.Education_qualification.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field class="px-4">
+        <mat-label>Children Below 16 Years</mat-label>
+        <mat-select
+          formControlName="children_below_16"
+          id="driver_children_below_16"
+        >
+          <mat-option id="0" value="0">0</mat-option>
+          <mat-option id="1" value="1">1</mat-option>
+          <mat-option id="2" value="2">2</mat-option>
+          <mat-option id="3" value="3">3</mat-option>
+          <mat-option id="4" value="4">4</mat-option
+          ><mat-option id="5" value="5">5</mat-option
+          ><mat-option id="more" value="6">More</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="f.children_below_16.errors?.required">
+          Field is required</mat-error
+        ></mat-form-field
+      >
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field class="px-4">
+        <mat-label
+          >Driving percentage<mat-icon>error_outline</mat-icon></mat-label
+        >
+        <mat-select
+          formControlName="driving_percentage"
+          (selectionChange)="DrivingPercentageFn($event)"
+          id="DrivingPercentage"
+        >
+          <mat-option
+            *ngFor="let DrivingPercentage of DrivingPercentages; let i = index"
+            [value]="DrivingPercentage"
+            >{{ DrivingPercentage }}%
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.driving_percentage.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class=" row mt-4 bg-f6  px-4 py-3">
+    <p class="font-sf-sb m-0 bg-f6 col-md-12">Driver violations</p>
+  </div>
+  <div class="row bg-f7 d-flex px-4">
+    <label id="Violations" class="col-md-8 color-2 font-sfd-r font-6 "
+      >Does policyholder have traffic violations?</label
+    >
+
+    <mat-radio-group
+      (change)="driverViolation($event)"
+      class="col-md-4"
+      aria-label=""
+      formControlName="driverViolation"
+      [disabled]="userInfoLookUps.Traffic_violations.length < 1"
+    >
+      <div class="row">
+        <mat-radio-button id="vio-df-no" class="col-md-6 p-3 col-12" value="2"
+          >No</mat-radio-button
+        >
+        <mat-radio-button id="vio-df-yes" class="col-md-6 p-3 col-12" value="1"
+          >Yes</mat-radio-button
+        >
+      </div>
+    </mat-radio-group>
+    <div class="col-md-12" *ngIf="driverViolationsCheck">
+      <div class="checking mb-3">
+        <mat-selection-list
+          formControlName="Traffic_violations"
+          class="row m-2"
+        >
+          <mat-list-option
+            class="col-md-4 col-6"
+            *ngFor="
+              let userInfoLookUp of userInfoLookUps.Traffic_violations;
+              let i = index
+            "
+            [value]="userInfoLookUp.Id"
+            >{{ userInfoLookUp.Name }}</mat-list-option
+          >
+        </mat-selection-list>
+        <mat-error
+          *ngIf="
+            submitted &&
+            DriverForm.controls['Traffic_violations'].hasError('required')
+          "
+          >Field is required</mat-error
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class=" row mt-4 bg-f6 px-4 py-3 ">
+    <p class="font-sf-sb m-0 bg-f6 col-md-12">Medical conditions</p>
+  </div>
+  <div class="row bg-f7 d-flex px-4">
+    <label id="MedicalConditions" class="col-md-8 color-2 font-sfd-r font-6 "
+      >Does policyholder have medical Conditions or Restrictions?</label
+    >
+
+    <mat-radio-group
+      (change)="driverMedical($event)"
+      class="col-md-4 row justify-content-between"
+      aria-label=""
+      formControlName="driverMedical"
+      [disabled]="userInfoLookUps.Medical_conditions.length < 1"
+      ><mat-radio-button id="med-df-no" class="col-md-6   p-3 col-12" value="2"
+        >No</mat-radio-button
+      >
+      <mat-radio-button id="med-df-yes" class="col-md-6  p-3 col-12" value="1"
+        >Yes</mat-radio-button
+      >
+    </mat-radio-group>
+    <div class="col-md-12" *ngIf="driverMedicalCheck">
+      <div class="checking mb-3">
+        <mat-selection-list
+          formControlName="Medical_conditions"
+          class="row m-2"
+        >
+          <mat-list-option
+            class="col-md-4 col-6"
+            *ngFor="
+              let userInfoLookUp of userInfoLookUps.Medical_conditions;
+              let i = index
+            "
+            [value]="userInfoLookUp.Id"
+            >{{ userInfoLookUp.Name }}</mat-list-option
+          >
+        </mat-selection-list>
+        <mat-error
+          *ngIf="
+            submitted &&
+            DriverForm.controls['Medical_conditions'].hasError('required')
+          "
+          >Field is required</mat-error
+        >
+      </div>
+    </div>
+  </div>
+  <div class=" text-center">
+    <button
+      (click)="cancel()"
+      mat-raised-button
+      tabindex="-1"
+      type="button"
+      class="previous my-5"
+    >
+      Cancel
+    </button>
+    <button
+      id="driver-action-btn"
+      mat-raised-button
+      tabindex="-1"
+      type="submit"
+      class="m-5"
+    >
+      {{ operation }}
+    </button>
+  </div>
+</form>

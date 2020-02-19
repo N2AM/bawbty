@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row m-0 py-3">
+    <div class="col-md-3 col-sm-12 col-12">
+      <p class="font-sf-sb font-7 font-600">Compare up to 4 agencies</p>
+      <button
+        (click)="removeAllComparedItems()"
+        id="clearAllCompared"
+        class="btn font-sf-sb font-7 font-600 color-55"
+      >
+        Clear all
+      </button>
+    </div>
+    <div class="col-md-7 col-sm-12 col-12 row">
+      <div *ngFor="let item of comparedItems" class="added">
+        <img
+          class="added-img"
+          src="{{ item.company_logo }}"
+          alt="Compared Item"
+        />
+        <button (click)="removeComparedItem(item)" class="btn">
+          <img src="../../../../../assets/icons/close.svg" alt="close" />
+        </button>
+      </div>
+      <!-- <div class="added">
+        <img
+          class="added-img"
+          src="../../../../../assets/images/compare.jpg"
+          alt="Compared Item"
+        />
+        <button class="btn">
+          <img src="../../../../../assets/icons/close.svg" alt="close" />
+        </button>
+      </div>
+      <div class="added">
+        <img
+          class="added-img"
+          src="../../../../../assets/images/compare.jpg"
+          alt="Compared Item"
+        />
+        <button class="btn">
+          <img src="../../../../../assets/icons/close.svg" alt="close" />
+        </button>
+      </div>
+      <div class="added">
+        <img
+          class="added-img"
+          src="../../../../../assets/images/compare.jpg"
+          alt="Compared Item"
+        />
+        <button class="btn">
+          <img src="../../../../../assets/icons/close.svg" alt="close" />
+        </button>
+      </div> -->
+    </div>
+    <div class="col-md-2 col-sm-12 col-12 py-3 text-center">
+      <button
+        [disabled]="comparedItems.length < 2"
+        (click)="compare()"
+        class="btn bg-64 btn-BG"
+        id="compare-items-btn"
+      >
+        <span class="font-sf-sb font-4 color-f ">Compare </span>
+      </button>
+    </div>
+  </div>
+</div>

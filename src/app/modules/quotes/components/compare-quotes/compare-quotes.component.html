@@ -1,0 +1,91 @@
+<div class="container pt-5 pb-4">
+  <div class="text-center">
+    <h1>Compare your insurance quotes</h1>
+    <button
+      class="btn color-55 font-mm"
+      id="backToQuotesFromCompare"
+      routerLink="/quotes/view"
+      routerLinkActive="router-link-active"
+    >
+      Back to all quotes<img
+        src="../../../../assets/icons/55-arrow.svg"
+        alt="go arrow"
+      />
+    </button>
+    <!-- routerLink="/quote/all" -->
+  </div>
+  <div style="overflow-x:auto;">
+    <table class=" bg-ff my-4">
+      <tr>
+        <td>
+          <h6 class="color-2 font-15 font-sf-m">Quotes</h6>
+          <button
+            class="btn color-7e font-sf-m mt-5 font-6"
+            (click)="clearAll()"
+          >
+            Clear all
+          </button>
+        </td>
+        <td *ngFor="let item of comparedItems">
+          <div class=" m-2 text-center pb-4 ">
+            <button
+              *ngIf="close"
+              class="btn close-btn"
+              (click)="removeComapredItem(item)"
+            >
+              <img
+                src="../../../../assets/images/close-button.png"
+                alt="Close Button"
+                class=""
+              />
+            </button>
+            <img
+              class="insurance-logo"
+              src="{{ item.company_logo }}"
+              alt="Insurance"
+            />
+            <span class="font-sf-m font-6 d-block m-2">{{
+              item.company_name
+            }}</span>
+            <span class="font-2 color-7e font-sf-m">Type: </span
+            ><span class="font-4 color-2 font-sf-m">{{
+              item.insurance_type
+            }}</span>
+            <span class="font-sf-m font-6 color-23 mt-2 d-block">Total</span>
+            <h6 class="font-sf-b font-7 mt-2 mb-3" id="test" #test>
+              {{ item.price }} SAR
+            </h6>
+            <button (click)="getPolicy(item)" mat-raised-button class="buy">
+              Buy Now
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr *ngFor="let price of price | keyvalue; let i = index">
+        <td class="text-left p-3">
+          <span class=" font-sf-m color-a20 font-7">
+            {{ price.key }}
+          </span>
+        </td>
+        <td *ngFor="let price of price.value; let i = index">
+          <mat-selection-list #prices (selectionChange)="onSelection($event)">
+            <mat-list-option
+              [selected]="price.checked"
+              *ngIf="price.price !== ''"
+              [value]="price"
+            >
+              {{ price.price }} SAR
+            </mat-list-option>
+            <span *ngIf="price.price === ''">Not included</span>
+          </mat-selection-list>
+        </td>
+      </tr>
+    </table>
+
+    <div class="py-2">
+      <p class=" px-2 color-7e font-sf-m font-5 ">
+        *Benefits Prices do not include VAT
+      </p>
+    </div>
+  </div>
+</div>

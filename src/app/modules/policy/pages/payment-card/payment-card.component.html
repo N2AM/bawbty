@@ -1,0 +1,131 @@
+<div class="container">
+  <div class="pt-5 text-center">
+    <img src="../../../../../assets/icons/done-ic.svg" alt="done" />
+    <h1 class="color-2 font-10 mt-5">Thanks for using BAWBTY</h1>
+    <p class="color-7e font-4 font-sf-m col-md-12 pt-3 mx-auto text-center">
+      You will receive shortly an email and sms by your policy details.
+    </p>
+  </div>
+  <h6 class="color-2 font-10 font-sf-sb mt-5">Policy Details</h6>
+  <div class="bg-ff row mx-0 py-4 mb-5 policy">
+    <div class="col-md-8 d-flex">
+      <img
+        [src]="policy.PolicyDetails.CompanyLogo"
+        alt="company logo"
+        class="h-icon"
+      />
+      <div class="d-block">
+        <h3 class="color-a20 font-sf-m font-10">
+          {{ policy.PolicyDetails.CompanyName }}
+        </h3>
+        <h6
+          class="font-4 w-25 text-center color-64 p-1 font-sf-m border-05 bg-ec"
+        >
+          {{ policy.PolicyDetails.InsuranceType }}
+        </h6>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="mb-2">
+        <span class="font-4 color-7e font-sf-m">Total Price</span>
+        <!-- <span>SAR</span> -->
+      </div>
+      <div>
+        <span class="color-8ff font-10 font-sf-sb">
+          {{ policy.PolicyDetails.TotalPrice }}</span
+        >
+        <span class="color-2 font-5 font-sf-m mx-1">SAR</span>
+      </div>
+    </div>
+    <hr class="col-md-11" />
+    <div class="col-md-6 benefits">
+      <div class="row m-0">
+        <ul class="col-md-6">
+          <li>
+            <span class="color-7e font-4 font-sf-m">Quote Reference:</span>
+          </li>
+          <li>
+            <span class="color-7e font-4 font-sf-m"
+              >Policy Effective Date:</span
+            >
+          </li>
+          <li>
+            <span class="color-7e font-4 font-sf-m">Policy Expiry Date:</span>
+          </li>
+        </ul>
+        <ul class="col-md-6">
+          <li>
+            <span class="color-2 font-4 font-sf-m">
+              {{ policy.PolicyDetails.QuoteReference }}
+            </span>
+          </li>
+          <li>
+            <span class="color-2 font-4 font-sf-m">
+              {{ policy.PolicyDetails.EffictiveDate }}
+            </span>
+          </li>
+          <li>
+            <span class="color-2 font-4 font-sf-m">
+              {{ policy.PolicyDetails.PolicyExpiryDate }}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row m-0">
+        <ul class="col-md-6">
+          <li>
+            <span class="color-7e font-4 font-sf-m">Vehicle ID:</span>
+          </li>
+          <li>
+            <span class="color-7e font-4 font-sf-m">Plate number:</span>
+          </li>
+          <li>
+            <span class="color-7e font-4 font-sf-m">Vehicle description:</span>
+          </li>
+        </ul>
+        <ul class="col-md-6">
+          <li>
+            <span class="color-2 font-4 font-sf-m">
+              {{ policy.VehicleDetails.VehicleID }}
+            </span>
+          </li>
+          <li>
+            <span class="color-2 font-4 font-sf-m">
+              {{ policy.VehicleDetails.PlateNumber }}
+            </span>
+          </li>
+          <li>
+            <span class="color-2 font-4 font-sf-m">
+              {{ policy.VehicleDetails.Maker }} -
+              {{ policy.VehicleDetails.Model }}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class=" row pb-4 w-100 justify-content-center pb-4 w-100">
+    <button
+      mat-raised-button
+      tabindex="-1"
+      type="button"
+      class="done m-5"
+      id="done"
+      (click)="done()"
+    >
+      Done
+    </button>
+    <button
+      mat-raised-button
+      class="m-5"
+      tabindex="-1"
+      type="submit"
+      id="print"
+      (click)="print()"
+    >
+      Print
+    </button>
+  </div>
+</div>

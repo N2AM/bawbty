@@ -1,0 +1,22 @@
+td,
+th {
+  color: #000;
+  font-family: SFProDisplay-Medium;
+  font-size: 1.5em;
+}
+tr {
+  background: #fff;
+}
+img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 650px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

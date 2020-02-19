@@ -1,0 +1,89 @@
+<div id="mainSlider" class="home" (window:scroll)="onScroll($event)">
+  <div class="slider">
+    <div class="content px-0 container px-3">
+      <h1 class="font-mxb color-f">Insure your vehicle now.</h1>
+      <p class="font-mr pb-3">
+        Continuously working to provide a various option of quotes from
+        different agencies.
+      </p>
+      <form
+        [formGroup]="insuranceForm"
+        class="row  m-0  col-md-10 px-0 "
+        (ngSubmit)="homeSubmit()"
+      >
+        <div
+          class="col-lg-10 mt-2 bg-ff px-3 d-flex justify-content-between pt-2"
+        >
+          <mat-form-field class="col">
+            <mat-label>Type of registeration</mat-label>
+            <mat-select formControlName="registration_type">
+              <mat-option value="0">Sequence Number</mat-option>
+              <mat-option value="1">Custom Card</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col" [ngClass]="{ 'd-none': value === '1' }">
+            <mat-label>Purpose of insurance</mat-label>
+            <mat-select formControlName="purpose_of_insurance">
+              <mat-option value="0">New insurance</mat-option>
+              <mat-option value="1">Transfer ownership</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col" (click)="policy_effective_date.open()">
+            <mat-label>Policy effective date</mat-label>
+            <mat-datepicker-toggle
+              matSuffix
+              id="mat-datepicker-toggle-bi"
+              [for]="policy_effective_date"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              disabled="false"
+              id="mat-datepicker-bi"
+              #policy_effective_date
+            ></mat-datepicker>
+            <input
+              matInput
+              id="policy-effective-date"
+              [matDatepicker]="policy_effective_date"
+              [min]="minDate"
+              [max]="maxDate"
+              placeholder=""
+              formControlName="policy_effective_date"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-2 col-md-12 col-12 mt-2 text-center">
+          <button
+            class="h-100"
+            id="submit-homeForm"
+            mat-raised-button
+            type="submit"
+          >
+            Get quotes
+          </button>
+        </div>
+      </form>
+      <div class="pt-5 row">
+        <div class="d-flex pt-4 mt-2">
+          <img
+            id="dash"
+            class="mt-2 mx-3"
+            src="../../../../../assets/icons/dash.svg"
+            alt="dash"
+          />
+          <h3 class="font-msb font-9 color-f">
+            Get insured with these agencies and more
+          </h3>
+        </div>
+      </div>
+      <div class="pt-5">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let agency of agencies">
+            <div class="item-img">
+              <img src="{{ agency.Logo }}" alt="" />
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>

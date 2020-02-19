@@ -1,0 +1,89 @@
+label {
+  color: #222222b3;
+  font-family: Montserrat-Semi-Bold;
+  opacity: 0.7;
+  font-size: 1.4em;
+}
+select {
+  font-family: Montserrat-Semi-Bold;
+  width: 180px;
+}
+.text-rs {
+  text-align: center !important;
+  @media screen and (max-width: 767px) {
+    text-align: start !important;
+    padding: 0;
+  }
+}
+table {
+  width: 90%;
+  margin: auto;
+  tr {
+    // text-align: center;
+  }
+  td {
+    font-family: Montserrat-Semi-Bold;
+    font-size: 1.2em;
+    line-height: 22px;
+  }
+}
+.result {
+  .col-md-3,
+  .col-md-6 {
+    border-right: 1px solid #f6f7f8;
+  }
+  p {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+  .result-img {
+    width: 150px;
+    height: 150px;
+  }
+  mat-checkbox {
+    color: #7e7e7e;
+    font-family: Montserrat-Medium;
+    font-size: 1em !important;
+    margin-bottom: 0 !important;
+  }
+  th {
+    font-size: 1.2em;
+  }
+  td {
+    padding-bottom: 1.7rem !important;
+  }
+}
+
+.shade {
+  box-shadow: 0 2px 2px 0 #0000000f;
+  span {
+    font-size: 1.5em;
+    font-weight: 500;
+    @media screen and (max-width: 1330px) {
+      font-size: 1.3em;
+    }
+  }
+}
+
+span {
+  font-size: 1.4em;
+}
+
+.quotes-icon {
+  width: 15px;
+  height: 15px;
+}
+.compare-items {
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+  box-shadow: 0px 6px 20px 0 #00000038;
+  background-color: #fff;
+  z-index: 99;
+}

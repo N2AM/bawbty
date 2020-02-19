@@ -1,0 +1,154 @@
+<footer>
+  <div class="footer">
+    <div *ngIf="router.url == '/' || router.url == '/how-it-works'" class="head pb-5 text-center">
+      <img
+        alt="line"
+        class="v-line mb-3 mt-2"
+        src="../../../../assets/images/-e-line.svg"
+      />
+      <h1>Get the app</h1>
+    </div>
+    <div *ngIf="router.url == '/' || router.url == '/how-it-works'" class="mid row mt-5 container">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <img src="../../../../assets/images/footer-mobiles.png" alt="" />
+      </div>
+      <div class="col-md-7 p-5">
+        <h2>GET BAWBTY APP</h2>
+        <p>
+          Simply capture and select the best fit from various quotes between
+          your hands.
+        </p>
+        <div class="d-flex text-left">
+          <img
+            src="../../../../assets/images/google-play.png"
+            alt="google play"
+          />
+          <img
+            src="../../../../assets/images/apple-store.png"
+            alt="apple store"
+          />
+        </div>
+      </div>
+      <div class="col-md-1">
+        <ul class="bubbles">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container tail py-3 mt-5" [ngClass]="{ 'mt-5': hide == true }">
+      <hr *ngIf="router.url == '/' || router.url == '/how-it-works'" />
+      <div class="row">
+        <div class="col-lg-4 col-md-8 col-12">
+          <img
+            class="py-4 logo"
+            src="../../../../assets/images/white-logo.png"
+            alt="Bawbty logo"
+          />
+          <p class="font-sf-r font-5">
+            BAWBTY provides a smart electronic platform that gives the customer
+            the freedom to compare and choose between the insurance products
+            available in the market.
+          </p>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-lg-7 col-md-12 col-12 row py-4">
+          <!-- <div class="col-md-4">
+            <img
+              src="../../../../assets/images/h-line.svg"
+              alt="horizontal line"
+            />
+            <h6>{{ "quick links" | uppercase }}</h6>
+            <div class="links pt-4">
+              <a href="#">About us</a>
+              <a href="#">Contact us</a>
+              <a href="#">Privacy & Security</a>
+              <a href="#">Terms of Use</a>
+            </div>
+          </div> -->
+          <div class="col-lg-4 col-md-4 col-12 pb-4">
+            <h6 class="font-sf-b font-6">{{ "Get bawbty app" | uppercase }}</h6>
+            <img
+              src="../../../../assets/images/h-line.svg"
+              alt="horizontal line"
+            />
+            <div class="links pt-4">
+              <a>
+                <img
+                  src="../../../../assets/images/ast-google-play@3x.png"
+                  alt="google play icon"
+                />
+                <span class="color-f font-1 font-sf-r">Google play</span>
+              </a>
+              <a
+                ><img
+                  src="../../../../assets/images/ast-apple@3x.png"
+                  alt="apple store icon"
+                />
+                <span class="color-f font-1 font-sf-r">Apple store</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-8 col-12">
+            <h6 class="font-sf-b font-6">{{ "EXPLORE" | uppercase }}</h6>
+            <img
+              src="../../../../assets/images/h-line.svg"
+              alt="horizontal line"
+            />
+            <div class="links pt-4 d-flex justify-content-between">
+              <a class="color-f font-4 font-sf-r"> About us</a>
+              <a class="color-f font-4 font-sf-r">Contact us</a>
+              <a class="color-f font-4 font-sf-r">Privacy policy</a>
+              <a class="color-f font-4 font-sf-r">Terms of use</a>
+            </div>
+            <div class="d-flex justify-content-between pt-4">
+              <img src="../../../../assets/icons/sama-logo.svg" alt="" />
+              <img src="../../../../assets/icons/separator-f.svg" alt="" />
+              <img src="../../../../assets/icons/ro-2-ya-logo.svg" alt="" />
+              <span class="font-sf-r pt-2 color-f font-3"
+                >Authorized by the Saudi Arabian Monetary Authority</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 row mx-0 copyright d-flex  text-center py-3">
+          <div class="col-md-4 col-12 p-0 links  d-flex">
+            <a class="color-f font-sf-b">{{ "follow us" | uppercase }}</a>
+            <a>
+              <img
+                src="../../../../assets/images/instagram-logo.svg"
+                alt="google play icon"
+              />
+            </a>
+            <a
+              ><img
+                src="../../../../assets/images/facebook-logo.svg"
+                alt="twitter icon"
+              />
+            </a>
+            <a
+              ><img
+                src="../../../../assets/images/twitter.svg"
+                alt="instagram icon"
+              />
+            </a>
+            <a
+              ><img
+                src="../../../../assets/images/linkedin.svg"
+                alt="instagram icon"
+              />
+            </a>
+          </div>
+          <div class="col-md-8 col-12 row">
+            <div class="col-md-5 col-12"></div>
+            <p class="col-md-7 col-12 px-4 font-sf-r my-2 font-4">
+              Copyright © BAWBTY 2020. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

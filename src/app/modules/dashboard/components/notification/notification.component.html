@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h6 class="color-2 font-sf-sb font-6 pt-5 pb-1">Notifications</h6>
+  <div class="bg-ff p-3">
+    <mat-checkbox (change)="open = !open"
+      ><span class="color-2 font-sf-m font-5"
+        >Expiring Policy</span
+      ></mat-checkbox
+    >
+    <p class="color-2 font-sf-r font-4 m-0 px-4 py-3">
+      <span>Remind me before</span>
+      <span *ngIf="!open">policy expiration date by 5 days</span>
+      <mat-select
+        [(ngModel)]="selectedDay"
+        *ngIf="open"
+        class="col-md-1 m-2 p-2"
+      >
+        <mat-option [value]="day" *ngFor="let day of days"
+          >{{ day }} days</mat-option
+        >
+      </mat-select>
+    </p>
+  </div>
+</div>

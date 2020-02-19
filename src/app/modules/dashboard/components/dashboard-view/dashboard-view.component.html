@@ -1,0 +1,66 @@
+<div *ngIf="policiesCounts" class="container px-0  pt-4 pb-5 ">
+  <div class="row m-0">
+    <div class="col-md-3 px-2 my-2">
+      <div class=" bg-ff p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="color-7e font-sf-r font-6 py-3">Active policies</span>
+          <img src="../../../../../assets/icons/actie-ic.svg" alt="" />
+        </div>
+        <span class="font-sf-b font-15">{{ policiesCounts[0].Count }}</span>
+        <span class="font-sf-r font-9 mx-3">Policies</span>
+      </div>
+    </div>
+    <div class="col-md-3 px-2 my-2">
+      <div class=" bg-ff p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="color-7e font-sf-r font-6 py-3"
+            >Policies Due for Renewal</span
+          >
+          <img src="../../../../../assets/icons/renew.svg" alt="" />
+        </div>
+        <span class="font-sf-b font-15">{{ policiesCounts[8].Count }}</span>
+        <span class="font-sf-r font-9 mx-3">Policies</span>
+      </div>
+    </div>
+    <div class="col-md-3 px-2 my-2">
+      <div class=" bg-ff p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="color-7e font-sf-r font-6 py-3">Expired Policies</span>
+          <img src="../../../../../assets/icons/expire.svg" alt="" />
+        </div>
+        <span class="font-sf-b font-15">{{ policiesCounts[7].Count }}</span>
+        <span class="font-sf-r font-9 mx-3">Policies</span>
+      </div>
+    </div>
+    <div class="col-md-3 px-2 my-2">
+      <div class=" bg-ff p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="color-7e font-sf-r font-6 py-3">Previous Quotes</span>
+          <img src="../../../../../assets/icons/quotes.svg" alt="" />
+        </div>
+        <span class="font-sf-b font-15">0</span>
+        <span class="font-sf-r font-9 mx-3">Quotes</span>
+      </div>
+    </div>
+    <div class="col-md-3 px-2 my-2">
+      <div class=" bg-ff p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="color-7e font-sf-r font-6 py-3">Pending Policies</span>
+          <img src="../../../../../assets/icons/pending.svg" alt="" />
+        </div>
+        <span class="font-sf-b font-15">{{ policiesCounts[3].Count }}</span>
+        <span class="font-sf-r font-9 mx-3">Policies</span>
+      </div>
+    </div>
+    <div class="col-md-3 px-2 my-2">
+      <div class=" bg-ff p-3 ">
+        <div class="d-flex justify-content-between">
+          <span class="color-7e font-sf-r font-6 py-3">Esal Bills</span>
+          <img src="../../../../../assets/icons/bills.svg" alt="" />
+        </div>
+        <span class="font-sf-b font-15">0</span>
+        <span class="font-sf-r font-9 mx-3">Bills</span>
+      </div>
+    </div>
+  </div>
+</div>

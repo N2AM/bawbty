@@ -1,0 +1,61 @@
+$Deep-Sea: #018064;
+h6 {
+  font-size: 1.4em;
+}
+input {
+  // padding: 5px;
+}
+label {
+  padding-top: 20px;
+  padding-bottom: 5px;
+  font-size: 1.8em;
+  // opacity: 0.7;
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+}
+
+mat-checkbox {
+  font-family: Montserrat-Semi-Bold;
+  color: #777777;
+  span {
+    font-size: 1.4em;
+    opacity: 0.7;
+  }
+}
+.previous {
+  background: #fafafa;
+  color: #222222;
+  border: solid 1px rgb(34, 34, 34);
+}
+
+textarea {
+  font-family: Montserrat-Regular;
+}
+.checking {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  label {
+    padding: 0;
+  }
+  mat-checkbox {
+    color: #000;
+    font-size: 1.2em;
+  }
+  & :lang(en) {
+    // padding-right: 5%;
+  }
+  & :lang(ar) {
+    // padding-left: 5%;
+  }
+}
+.add-driver {
+  width: 24px;
+  height: 24px;
+}
+.previous {
+  background: #f3f3f3;
+  color: black;
+  border: 1px solid;
+}

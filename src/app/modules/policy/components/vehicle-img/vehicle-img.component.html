@@ -1,0 +1,77 @@
+<mat-label class="font-sf-r font-8 color-7e"
+  >{{ img.label }}<mat-icon>error_outline</mat-icon></mat-label
+>
+<div class="pt-2">
+  <div class=" bg-e7">
+    <label
+      *ngIf="!previewUrl"
+      [for]="img.id"
+      id="compImg-{{ img.id }}"
+      class="btn"
+    ></label>
+    <input
+      *ngIf="!previewUrl"
+      [id]="img.id"
+      type="file"
+      name="image"
+      (change)="fileProgress($event)"
+      style="visibility:hidden;"
+      accept="image/png,image/jpg,image/jpeg"
+    />
+    <div class="text-center">
+      <img
+        *ngIf="!errorUplode"
+        [src]="previewUrl ? previewUrl : img.defaultImg"
+        alt="Default"
+        [ngClass]="[previewUrl ? 'previewImg' : '']"
+      />
+      <img
+        *ngIf="errorUplode"
+        src="../../../../../assets/icons/validation-ic.svg"
+        alt="Default"
+      />
+      <p
+        *ngIf="errorUplode"
+        class="font-4 font-sf-m color-7e pt-1 m-0"
+        [ngStyle]="{ color: errorUplode == true ? 'red' : '#7e7e7e' }"
+      >
+        Images format must be:<br />
+        Jpeg ,jpg or png
+      </p>
+      <p
+        *ngIf="!previewUrl && !errorUplode"
+        class="font-4 font-sf-m color-7e pt-1 m-0"
+        [ngStyle]="{ color: errorUplode == true ? 'red' : '#7e7e7e' }"
+      >
+        .Jpeg .jpg .png
+      </p>
+      <p
+        *ngIf="!previewUrl"
+        class="font-4 font-sf-m color-7e py-1 m-0"
+        [ngStyle]="{ color: errorUplode == true ? 'red' : '#7e7e7e' }"
+      >
+        Maximum size : 4MB
+      </p>
+    </div>
+    <button
+      *ngIf="previewUrl && !payCheck"
+      class="btn delete"
+      (click)="deleteImg()"
+    ></button>
+    <!-- <img
+      #image
+      *ngIf="previewUrl"
+      [src]="previewUrl"
+      class="previewImg"
+      id="vImg-{{ img.id }}"
+    /> -->
+  </div>
+  <div *ngIf="fileUploadProgress">
+    Upload progress: {{ fileUploadProgress }}
+  </div>
+  <div class="image-preview mb-3"></div>
+
+  <div class="mb-3" *ngIf="uploadedFilePath">
+    {{ uploadedFilePath }}
+  </div>
+</div>

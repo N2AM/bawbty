@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "app": {
+        "project": "Bawbty",
+        "target": "build",
+        "configuration": "production",
+        "path": "dist/Bawbty"
+      },
+      "azureHosting": {
+        "subscription": "01b7be2e-11f2-4e2b-bb4b-1e499021adc9",
+        "resourceGroupName": "Bawbty-static-deploy",
+        "account": "bawbtystatic"
+      }
+    }
+  ]
+}

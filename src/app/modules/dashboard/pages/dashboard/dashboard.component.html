@@ -1,0 +1,145 @@
+<div class=" bg-fa  pt-5">
+  <div class="container">
+    <div class="row">
+      <div *ngIf="userProfile" class="col-md-12 col-12 row m-0 p-0">
+        <div class="col-md-12 col-12 row m-0 pb-2 justify-content-between">
+          <span class="color-2 font-sf-m font-8 col-md-2 py-3 col-7 p-0">{{
+            userProfile.fullName
+          }}</span>
+          <div class="col-md-2 col-5 d-flex justify-content-between">
+            <a (click)="edit = true">
+              <img
+                src="../../../../../assets/icons/edit.svg"
+                alt=""
+                class="mx-2"/></a
+            ><a routerLink="/dashboard/settings"
+              ><img src="../../../../../assets/icons/settings.svg" alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="col-md-8 col-12 row ">
+          <div class="col-md-6 col-12 pb-2">
+            <img src="../../../../../assets/icons/mail-ic.svg" alt="" /><span
+              class="font-sf-r  mx-2
+ color-7e font-7"
+              >Email:</span
+            ><span class="font-sf-r color-2 font-7"
+              >{{ userProfile.email }}
+            </span>
+          </div>
+          <div class="col-md-6 col-12">
+            <img
+              src="../../../../../assets/icons/mail-ic-copy.svg"
+              alt=""
+            /><span
+              class="font-sf-r  mx-2
+ color-7e font-7"
+              >Mobile number: </span
+            ><span class="font-sf-r color-2 font-7"
+              >{{ userProfile.phoneNumber }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet *ngIf="!edit"></router-outlet>
+</div>
+
+<!-- <app-side-menu class="col-md-3 col-12 text-center py-5 row"></app-side-menu> -->
+<!-- <div class="col-md-9 col-12"> -->
+<!-- <router-outlet></router-outlet> -->
+<!-- </div> -->
+<div *ngIf="edit" class="bg-7e">
+  <div class="container">
+    <h5 class="color-2 font-sf-sb font-7 pt-4 pb-1">Edit profile</h5>
+
+    <form
+      [formGroup]="editProfileForm"
+      class="pt-3 w-100"
+      (ngSubmit)="submitProfile()"
+    >
+      <div
+        *ngIf="formError && formError !== ''"
+        class=" mb-3 col-md-12 mb-2 mx-auto alert alert-danger font-sfd-m"
+      >
+        {{ formError }}
+      </div>
+      <div class="row bg-ff py-4">
+        <mat-form-field class="col-md-4 col-12 pb-4">
+          <mat-label>Full Name</mat-label>
+          <div class="d-flex">
+            <input
+              id="fullName"
+              type="text"
+              placeholder=""
+              matInput
+              formControlName="fullName"
+              minlength="2"
+              maxlength="50"
+            />
+          </div>
+          <mat-error *ngIf="f.fullName.errors?.required"
+            >Full Name is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="col-md-4 col-12 pb-4">
+          <mat-label>Email</mat-label>
+          <div class="d-flex">
+            <input
+              id="email"
+              type="text"
+              placeholder=""
+              matInput
+              formControlName="email"
+              minlength="6"
+              maxlength="50"
+            />
+          </div>
+          <mat-error *ngIf="f.email.errors?.required"
+            >Email is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="col-md-4 col-12 pb-4">
+          <mat-label>Mobile Number</mat-label>
+          <div class="d-flex">
+            <input
+              type="text"
+              matInput
+              showHideInput
+              maxlength="16"
+              name="phoneNumber"
+              formControlName="phoneNumber"
+              id="phoneNumber"
+            />
+          </div>
+          <mat-error *ngIf="f.phoneNumber.errors?.required"
+            >Mobile Number is required.</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="row pb-5">
+        <div class=" text-right w-100 ">
+          <button
+            type="button"
+            mat-raised-button
+            tabindex="-1"
+            class="previous mx-5 mt-5 font-sf-sb mat-raised-button"
+            (click)="edit = false"
+          >
+            cancel
+          </button>
+          <button
+            class="mt-5 font-sf-sb mat-raised-button"
+            mat-raised-button
+            tabindex="-1"
+            type="submit"
+            [disabled]="submitted"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

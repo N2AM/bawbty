@@ -1,0 +1,42 @@
+<div class="container py-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col-md-4" class="font-sf-sb color-7e font-6">
+          Policy Holder ID
+        </th>
+        <th scope="col-md-4" class="font-sf-sb color-7e font-6">Full Name</th>
+        <th scope="col-md-4"></th>
+        <th scope="col-md-4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policyHolder of policyHolders">
+        <th scope="row">{{ policyHolder.PolicyHolderId }}</th>
+        <td>{{ policyHolder.FullName }}</td>
+        <td></td>
+        <td class="text-center">
+          <button class="btn p-1 mx-3">
+            <img src="../../../../../assets/icons/edit-ic.svg" alt="" /><span
+              class="color-55 mx-1 font-1"
+              >Edit</span
+            >
+          </button>
+          <button
+            [disabled]="!policyHolder.IsDeletable"
+            type="button"
+            class="btn p-1 mx-3"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+            (click)="deletePolicyHolder(policyHolder)"
+          >
+            <img src="../../../../../assets/icons/delete-ic.svg" alt="" /><span
+              class="err mx-1 font-1"
+              >Delete</span
+            >
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

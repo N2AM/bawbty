@@ -1,0 +1,233 @@
+<form
+  *ngIf="vehicleInfoLookups"
+  [formGroup]="vehicleInfoForm"
+  class="col-md-10 pt-4 m-auto"
+  (ngSubmit)="vInfo()"
+>
+  <div
+    *ngIf="backvalidation && formError !== ''"
+    class="col-md-11 m-auto alert alert-danger"
+  >
+    {{ formError }}
+  </div>
+  <div class="bg-f7 row pb-4 p-4">
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <input
+          id="vehicleValue"
+          placeholder="Enter vehicle estimated value"
+          formControlName="vehicle_value"
+          type="number"
+          min="10000"
+          matInput
+          onKeyPress="if(this.value.length==8)return false;"
+        />
+
+        <mat-error *ngIf="f.vehicle_value.errors?.required">
+          Vehicle value is required
+        </mat-error>
+        <mat-error *ngIf="f.vehicle_value.errors?.min && agency">
+          Vehicle value must not be less than 30000
+        </mat-error>
+        <mat-error *ngIf="f.vehicle_value.errors?.min && workshop">
+          Vehicle value must not be less than 10000
+        </mat-error>
+        <mat-error *ngIf="f.vehicle_value.errors?.max">
+          Enter a valid Vehicle estimated value
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Overnight parking</mat-label>
+        <mat-select formControlName="overnight_parking" id="OvernightParking">
+          <mat-option
+            id="{{ vehicleInfoLookup.Name }}"
+            *ngFor="
+              let vehicleInfoLookup of vehicleInfoLookups.Overnight_parkings;
+              let i = index
+            "
+            value="{{ vehicleInfoLookup.Id }}"
+            >{{ vehicleInfoLookup.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.overnight_parking.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Transmission type</mat-label>
+        <mat-select formControlName="transmission_type" id="TransmissionType">
+          <mat-option value="0">Automatic</mat-option>
+          <mat-option value="1">Manual</mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.transmission_type.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Expected KM annually</mat-label>
+        <mat-select formControlName="expected_km_annual" id="ExpectedKM">
+          <mat-option
+            id="{{ vehicleInfoLookup.Name }}"
+            *ngFor="
+              let vehicleInfoLookup of vehicleInfoLookups.Expected_km_anually;
+              let i = index
+            "
+            value="{{ vehicleInfoLookup.Id }}"
+            >{{ vehicleInfoLookup.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.expected_km_annual.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Purpose of Vehicle Use</mat-label>
+        <mat-select formControlName="purpose_of_vehicle_use" id="PurposeOfUse">
+          <mat-option
+            id="{{ vehicleInfoLookup.Name }}"
+            *ngFor="
+              let vehicleInfoLookup of vehicleInfoLookups.Purpose_of_vehicle_use;
+              let i = index
+            "
+            value="{{ vehicleInfoLookup.Id }}"
+            >{{ vehicleInfoLookup.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.purpose_of_vehicle_use.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Driving city</mat-label>
+        <mat-select formControlName="driving_city" id="DrivingCity">
+          <mat-option
+            id="{{ vehicleInfoLookup.Name }}"
+            *ngFor="
+              let vehicleInfoLookup of vehicleInfoLookups.Driving_city;
+              let i = index
+            "
+            value="{{ vehicleInfoLookup.Id }}"
+            >{{ vehicleInfoLookup.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.driving_city.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Repair Method</mat-label>
+        <mat-select formControlName="repair_method" id="RepairMethod">
+          <mat-option
+            id="{{ vehicleInfoLookup.Name }}"
+            *ngFor="
+              let vehicleInfoLookup of vehicleInfoLookups.RepairMethods;
+              let i = index
+            "
+            value="{{ vehicleInfoLookup.Id }}"
+            >{{ vehicleInfoLookup.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.repair_method.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+  <div class=" row mt-4 bg-f6  px-4 py-3">
+    <p class="font-sf-sb m-0 bg-f6 col-md-12">Modifications</p>
+  </div>
+  <div class="bg-f7 row pb-4 p-4">
+    <div class="row bg-f7 d-flex px-4">
+      <label id="Violations" class="col-md-8 color-2 font-sfd-r font-6 "
+        >Does your vehicle have any modifications?</label
+      >
+
+      <mat-radio-group
+        (change)="VehicleModifications($event)"
+        class="col-md-4"
+        aria-label=""
+      >
+        <div class="row">
+          <mat-radio-button
+            id="vf-no"
+            checked
+            class="col-md-6 p-3 col-12"
+            value="2"
+            >No</mat-radio-button
+          >
+          <mat-radio-button id="vf-yes" class="col-md-6 p-3 col-12" value="1"
+            >Yes</mat-radio-button
+          >
+        </div>
+      </mat-radio-group>
+    </div>
+    <div class="col-md-12 px-4" *ngIf="open === '1'">
+      <!-- <textarea
+          matInput
+          maxlength="256"
+          #message
+          rows="3"
+          matTextareaAutosize
+          matAutosizeMinRows="1"
+          matAutosizeMaxRows="3"
+          formControlName="vehicle_specifications"
+          id="VehicleModification"
+          placeholder="Tell us about your vehicle modifications..."
+        ></textarea>
+        <mat-hint align="end">{{ message.value.length }} / 256</mat-hint> -->
+      <!-- <mat-label>Vehicle Specifications</mat-label> -->
+      <mat-selection-list
+        formControlName="vehicle_specifications"
+        id="VehicleSpecifications"
+        class="row m-2"
+      >
+        <mat-list-option
+          class="col-md-4 col-12"
+          id="{{ vehicleInfoLookup.Name }}"
+          *ngFor="
+            let vehicleInfoLookup of vehicleInfoLookups.VehicleSpecifications;
+            let i = index
+          "
+          value="{{ vehicleInfoLookup.Id }}"
+          >{{ vehicleInfoLookup.Name }}</mat-list-option
+        >
+      </mat-selection-list>
+      <mat-error *ngIf="f.vehicle_specifications.errors?.required">
+        Field is required
+      </mat-error>
+    </div>
+  </div>
+  <div class=" row pb-4 w-100 justify-content-center pb-4 w-100">
+    <button
+      mat-raised-button
+      tabindex="-1"
+      type="button"
+      class="previous m-5"
+      (click)="moveToSelectedTab(1, 2)"
+    >
+      Previous
+    </button>
+    <button
+      mat-raised-button
+      tabindex="-1"
+      type="submit"
+      class="m-5"
+      [disabled]="submitted"
+      id="getQuotes"
+    >
+      Get quotes
+    </button>
+  </div>
+</form>

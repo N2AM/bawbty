@@ -1,0 +1,426 @@
+<div class="container py-4">
+  <div class="row justify-content-between m-0">
+    <a
+      routerLink="/"
+      class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4 p-0"
+      [ngStyle]="{
+        background:
+          router.url == '/' || router.url == '/how-it-works'
+            ? 'url(../../../../../../assets/images/logo.png) 00/49% no-repeat '
+            : 'url(../../../../../../assets/images/black-logo.png) 00/49% no-repeat ',
+        color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000'
+      }"
+    >
+    </a>
+    <div class="overlayed col-sm-6 col-4 m-0 row p-0"></div>
+    <div
+      id="nav-links"
+      [ngStyle]="{ background: router.url == '/' || router.url == '/how-it-works' ? '#22292c' : '#fafafa' }"
+      class="col-xl-10 col-lg-9 col-md-10 col-sm-6 col-8 m-0 row p-0"
+    >
+      <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mx-auto pt-2">
+        <ul>
+          <li>
+            <a
+              [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+              routerLink="/quote/insurance-forms"
+              id="get-quote"
+              class="font-sf-m"
+              routerLinkActive="router-link-active"
+              >{{ "app.GetAquote" | translate }}</a
+            >
+          </li>
+          <li>
+            <a
+              [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+              id="InsuranceAgencies"
+              routerLinkActive="router-link-active"
+              class="font-sf-m"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >{{ "app.InsuranceAgencies" | translate }}</a
+            >
+            <!-- routerLink="/" -->
+          </li>
+
+          <li>
+            <a
+              [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+              id="faq"
+              routerLinkActive="router-link-active"
+              class="font-sf-m"
+              >{{ "app.FAQ" | translate }}</a
+            >
+            <!-- routerLink="/faq" -->
+          </li>
+          <li *ngIf="!unAuth" class="notify">
+            <a
+              [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+              routerLinkActive="router-link-active"
+              class="font-sf-m d-flex justify-content-between"
+            >
+              Notifications<span id="notify">+9</span></a
+            >
+            <!-- routerLink="/faq" -->
+          </li>
+        </ul>
+      </div>
+      <div
+        class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mx-auto py-3  lang-res"
+      >
+        <ul>
+          <li>
+            <a
+              [ngStyle]="{
+                color:
+                  language.code == 'en'
+                    ? '#018064'
+                    : router.url == '/' || router.url == '/how-it-works'
+                    ? '#fff'
+                    : '#000'
+              }"
+              id="get-quote"
+              class="font-sf-m"
+              routerLinkActive="router-link-active"
+              (click)="useLanguage('en')"
+            >
+              English</a
+            >
+          </li>
+          <li>
+            <a
+              [ngStyle]="{
+                color:
+                  language.code == 'ar'
+                    ? '#018064'
+                    : router.url == '/' || router.url == '/how-it-works'
+                    ? '#fff'
+                    : '#000'
+              }"
+              id="arabic"
+              routerLinkActive="router-link-active"
+              class="font-cb"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="useLanguage('ar')"
+              >عربي</a
+            >
+            <!-- routerLink="/" -->
+          </li>
+        </ul>
+        <div
+          *ngIf="unAuth"
+          [ngStyle]="{
+            background: router.url == '/' || router.url == '/how-it-works' ? 'transparent' : '#f2f2f2'
+          }"
+          class="unauth-div col-md-12 text-center py-4"
+        >
+          <button
+            [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#fff' }"
+            class=" btn bg-64 font-sf-m font-7 w-100"
+            routerLink="auth/login"
+          >
+            Login
+          </button>
+          <div class="mt-2">
+            <a class="color-64 font-sf-m font-5" routerLink="auth/sign-up">
+              Don’t have an account? Sign up</a
+            >
+          </div>
+        </div>
+        <div *ngIf="!unAuth" class="account col-md-12">
+          <hr />
+          <div class="d-flex pt-3">
+            <span
+              [ngStyle]="{
+                background:
+                  router.url == '/' || router.url == '/how-it-works'
+                    ? 'url(../../../../../../assets/icons/avatar-ic.png) 00/contain no-repeat'
+                    : 'url(../../../../../../assets/icons/man-user.svg) 00/contain no-repeat'
+              }"
+              class="h-icon user-avatar"
+            ></span>
+            <button
+              class="btn d-flex justify-content-between "
+              type="button"
+              data-toggle="collapse"
+              data-target="#Account"
+              aria-expanded="false"
+              aria-controls="Account"
+            >
+              <span
+                class="font-1 color-2 font-sf-m"
+                [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+                >{{ fullName }}</span
+              >
+              <i class="material-icons color-7e"> </i>
+            </button>
+          </div>
+
+          <div id="Account" class="collapse show pb-3 ">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="nav-link  font-sf-m font-3 color-2"
+                  data-toggle="pill"
+                  role="tab"
+                  href=""
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  >Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link  font-sf-m font-3 color-2"
+                  data-toggle="pill"
+                  role="tab"
+                  href=""
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link  font-sf-m font-3 color-2"
+                  data-toggle="pill"
+                  role="tab"
+                  href=""
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  >Policies</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link  font-sf-m font-3 color-2"
+                  data-toggle="pill"
+                  role="tab"
+                  href=""
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  >Policy holders</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link  font-sf-m font-3 color-2"
+                  data-toggle="pill"
+                  role="tab"
+                  href=""
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  >Vehicles</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link  font-sf-m font-3 color-2"
+                  data-toggle="pill"
+                  role="tab"
+                  href=""
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  (click)="signOut()"
+                  >Sign out</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 p-0 auth-div">
+        <ul class="m-auto">
+          <li>
+            <div class="dropdown">
+              <button
+                [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+                class="btn dropdown-toggle px-0 font-sf-m font-4"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ language.lang }}
+                <div
+                  id="lang-arrow"
+                  [ngStyle]="{
+                    background:
+                      router.url == '/' || router.url == '/how-it-works'
+                        ? 'url(../../../../../../assets/icons/arrow-ic.png) 00/contain no-repeat'
+                        : 'url(../../../../../../assets/icons/chevron-down.svg) 00/contain no-repeat'
+                  }"
+                ></div>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a
+                  class="font-sf-m"
+                  class="dropdown-item font-cb"
+                  id="ar"
+                  (click)="useLanguage('ar')"
+                  >عربي</a
+                >
+                <a
+                  class="font-sf-m"
+                  class="dropdown-item"
+                  id="en"
+                  (click)="useLanguage('en')"
+                  >EN</a
+                >
+                <!-- [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }" -->
+              </div>
+            </div>
+          </li>
+          <li *ngIf="unAuth" class="d-flex">
+            <div
+              [ngStyle]="{
+                background:
+                  router.url == '/' || router.url == '/how-it-works'
+                    ? 'url(../../../../../../assets/icons/avatar-ic.png) 00/contain no-repeat'
+                    : 'url(../../../../../../assets/icons/man-user.svg) 00/contain no-repeat'
+              }"
+              class="h-icon user-avatar"
+            ></div>
+            <!-- <img
+              alt="login-icon"
+              class=""
+              src="../../../../assets/icons/man-user.svg"
+            /> -->
+            <a
+              [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+              i18n
+              id="login"
+              routerLink="auth/login"
+              class="font-sf-m"
+              routerLinkActive="router-link-active"
+              >login</a
+            >
+          </li>
+          <!-- <li *ngIf="unAuth" class="d-flex">
+            <div
+              [ngStyle]="{
+                background:
+                  router.url == '/' || router.url == '/how-it-works'
+                    ? 'url(../../../../../../assets/icons/avatar-ic.png) 00/contain no-repeat'
+                    : 'url(../../../../../../assets/icons/man-user.svg) 00/contain no-repeat'
+              }"
+              class="h-icon user-avatar"
+            ></div>
+            <img
+              alt="login-icon"
+              class=""
+              src="../../../../assets/icons/man-user.svg"
+            />
+            <a
+              [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+              id="sign-up"
+              i18n
+              routerLink="auth/sign-up"
+              class="font-sf-m"
+              routerLinkActive="router-link-active"
+              >Sign up</a
+            >
+          </li> -->
+          <li *ngIf="!unAuth" class="d-flex">
+            <!-- <div
+              [ngStyle]="{
+                background:
+                  router.url == '/' || router.url == '/how-it-works'
+                    ? 'url(../../../../../../assets/icons/avatar-ic.png) 00/contain no-repeat'
+                    : 'url(../../../../../../assets/icons/man-user.svg) 00/contain no-repeat'
+              }"
+              class="h-icon user-avatar"
+            ></div> -->
+            <!-- <img
+              alt="login-icon"
+              class=""
+              src="../../../../assets/icons/man-user.svg"
+            /> -->
+            <div class="dropdown">
+              <button
+                [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+                class="btn dropdown-toggle px-0 font-sf-m font-4"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ fullName }}
+                <div
+                  id="lang-arrow"
+                  [ngStyle]="{
+                    background:
+                      router.url == '/' || router.url == '/how-it-works'
+                        ? 'url(../../../../../../assets/icons/arrow-ic.png) 00/contain no-repeat'
+                        : 'url(../../../../../../assets/icons/chevron-down.svg) 00/contain no-repeat'
+                  }"
+                ></div>
+              </button>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+                style="padding: 10px;"
+              >
+                <a
+                  [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#000' : '#000' }"
+                  id="sign-out"
+                  class="font-sf-m font-2"
+                  i18n
+                  routerLink="/dashboard"
+                  routerLinkActive="router-link-active"
+                  >Dashboard</a
+                >
+                <a
+                  [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#000' : '#000' }"
+                  id="sign-out"
+                  class="font-sf-m font-2"
+                  i18n
+                  (click)="signOut()"
+                  routerLinkActive="router-link-active"
+                  >Sign out</a
+                >
+                <!-- [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }" -->
+              </div>
+            </div>
+          </li>
+          <!-- <li><a [ngStyle] ='{"color": router.url == '/' || router.url == '/how-it-works' ? "#fff": "#000"}' i18n (click)="signout()">Sign Out</a></li> -->
+          <!-- <li>
+            <a [ngStyle] ='{"color": router.url == '/' || router.url == '/how-it-works' ? "#fff": "#000"}' routerLink="auth/sign-up" routerLinkActive="router-link-active">
+              <i class="material-icons">
+person_add
+</i>Signup</a
+            >
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <button
+      [ngStyle]="{ color: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+      id="menu-btn"
+    >
+      <svg viewBox="0 0  75 150">
+        <g>
+          <path
+            [ngStyle]="{ stroke: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+            class="line top"
+            d="M35,35h50c14.1,0,50.6,13,20.5,53.5s-121.9,21.6-94.4-40.3S111.6,8.4,85,35L35,85"
+          />
+          <path
+            [ngStyle]="{ stroke: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+            class="line bottom"
+            d="M35,85h50c14.1,0,50.6-13,20.5-53.5S-16.4,9.9,11.1,71.8S111.6,111.6,85,85L35,35"
+          />
+          <line
+            [ngStyle]="{ stroke: router.url == '/' || router.url == '/how-it-works' ? '#fff' : '#000' }"
+            class="line cross"
+            x1="35"
+            y1="60"
+            x2="85"
+            y2="60"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>

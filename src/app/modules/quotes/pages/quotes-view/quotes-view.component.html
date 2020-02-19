@@ -1,0 +1,167 @@
+<div *ngIf="quotesViewData.quotes" class="bg-f8 pt-5">
+  <div class="container px-0 pb-4">
+    <div class="row shade bg-f7 py-3 m-0">
+      <div class="col-md-7 col-12 font-4 row m-0 pt-1 ">
+        <div class="col-md-7 col-12 text-rs p-0 ">
+          <span class="color-7e m-0 font-sf-m">Vehicle Description:</span>
+          <span class="color-2 col-12 m-0 font-sf-sb">
+            {{ quotesViewData?.motor_maker }} -
+            {{ quotesViewData?.motor_model }}</span
+          >
+        </div>
+        <div class="col-md-5 col-12 border-x text-rs ">
+          <span class="color-7e m-0 font-sf-m">Plate number:</span>
+          <span class="color-2 m-0 font-sf-sb">
+            {{ quotesViewData?.motor_plate_number }}</span
+          >
+        </div>
+      </div>
+      <div class="col-md-5 col-12 row m-0">
+        <div class="col-md-12 p-0 row m-0 justify-content-between">
+          <div class="col-lg-8 col-md-8 col-12 pt-1 text-rs">
+            <span class="color-7e m-0 font-sf-m">Discount Eligibility:</span>
+            <span class="color-2 m-0 font-sf-sb">
+              {{ quotesViewData?.DiscountEligibility }}</span
+            >
+          </div>
+          <a
+            class="color-55 btn p-0 col-md-4 col-12 text-rs"
+            routerLink="/quote/insurance-forms"
+          >
+            <img
+              src="../../../../../assets/icons/edit-ic.svg"
+              alt="edit icon"
+              class="h-icon"
+            />
+            <span class="font-600 font-2 font-sf-sb">Edit quote</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="row m-0 py-3"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+      [fromRoot]="true"
+      [scrollWindow]="true"
+    >
+      <div class="col-lg-3 col-md-12 col-12 py-2">
+        <div class="row m-0 justify-content-between">
+          <span class="color-7e py-1 font-600  font-sf-sb font-7">Filters</span>
+          <button class="btn p-0">
+            <span
+              (click)="resetFilters()"
+              class="btn color-55 font-2 font-sf-sb p-1  "
+              >Reset</span
+            >
+          </button>
+        </div>
+        <app-filter
+          [deselectAll]="deselectAll"
+          [quotesFilter]="quotesFilter"
+          [insuranceTypes]="insuranceTypes"
+          [maintenanceCenters]="maintenanceCenters"
+          [x_cor]="x_correlation_id"
+          (quotesData)="getFiltered($event)"
+        ></app-filter>
+      </div>
+      <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-xs-12">
+        <div class=" row m-0 justify-content-between py-2">
+          <div class="d-flex m-0">
+            <span class="color-7e w-40 py-2 font-sf-sb font-5 mr-2"
+              >Sort by:</span
+            >
+            <select
+              id="sortSelect"
+              (change)="sortValue($event)"
+              class="form-control color-2"
+            >
+              <option value="0">Default</option>
+              <!-- <option value="1">Best Rating</option> -->
+              <option value="1">Price: High to Low</option>
+              <option value="2">Price: Low to High</option>
+            </select>
+          </div>
+          <div class="row m-0 py-2">
+            <img
+              src="../../../../../assets/icons/quotes-ic.svg"
+              alt="quotes icon"
+              class="quotes-icon h-icon"
+            />
+            <span class="color-2 h-icon font-500 font-4 font-sf-m"
+              >This quotes will expire in:
+            </span>
+            <!-- <span id="counter" class="color-8ff font-sf-m font-500"></span> -->
+            <countdown
+              (event)="handleEvent($event)"
+              #cd
+              class="color-8ff font-sf-m font-600 font-4"
+              [config]="{ leftTime: 36000 }"
+            ></countdown>
+          </div>
+        </div>
+        <app-quote-view
+          *ngFor="let item of quotesViewData.quotes; let i = index"
+          [quote]="item"
+          [id]="i"
+          [x_correlation_id]="quotesViewData.x_correlation_id"
+        >
+        </app-quote-view>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="comparedItems.length > 0" class="compare-items text-center pt-3">
+    <app-compared-items [comparedItems]="comparedItems"></app-compared-items>
+  </div>
+</div>
+<div
+  #modal
+  id="timer"
+  class="modal fade bd-example-modal-lg"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content ">
+      <div class="text-right p-3">
+        <!-- <button class="btn" (click)=''> -->
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <img src="../../../../../assets/icons/close.svg" alt="" />
+        </button>
+        <!-- </button> -->
+      </div>
+      <div class="text-center">
+        <img src="../../../../../assets/icons/timeout-ic.svg" alt="" />
+        <h4 class="mt-3 font-2 font-sf-sb font-12">
+          Quotation is expired
+        </h4>
+        <p class="mt-3 color-7e font-sf-m font-7 mb-4">
+          you can request a new quotation or
+        </p>
+        <div
+          class="d-flex justify-content-between col-md-5 my-5 mx-auto col-md-5"
+        >
+          <a
+            class="color-64 font-sf-sb font-8 p-2"
+            routerLink="/quote/insurance-forms"
+            data-dismiss="modal"
+            aria-label="Close"
+            >Get new quotes</a
+          >
+          <button id="buy" class="btn bg-64 btn-BG" (click)="update()">
+            <span class="font-sf-sb font-2 color-f">Update quotes</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

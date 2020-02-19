@@ -1,0 +1,33 @@
+.bg-e7 {
+  border: 1px dashed #ccc;
+  background: #f8f8f8 !important;
+  width: 185px;
+  height: 125px;
+}
+label {
+  background: url(../../../../../assets/icons/add-ic.svg) no-repeat;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  position: relative;
+  margin-top: 5px;
+}
+input {
+  width: 1px;
+  height: 1px;
+}
+.pt-2 {
+  text-align: end;
+}
+.delete {
+  background: url(../../../../../assets/icons/close-ic.svg) no-repeat;
+  position: relative;
+  margin-top: 10px;
+  top: -125px;
+}
+
+.previewImg {
+  width: 185px;
+  height: 125px;
+  object-fit: fill;
+}

@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-md-8 px-0 pb-5">
+    <div class="p-5">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">
+        <img
+          id="logo"
+          src="../../../../../assets/images/black-logo.png"
+          alt="logo"
+          class="ml-3"
+      /></a>
+    </div>
+    <div class="mt-5 py-4 text-center">
+      <h1>Sign in to BAWBTY</h1>
+      <!-- [formGroup="RegisterationForm" ]  -->
+      <form
+        class="mt-5 mx-auto col-md-9 text-center "
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div
+          *ngIf="formError && formError !== ''"
+          class="col-md-12 mb-2 mx-auto alert alert-danger font-sfd-m"
+        >
+          {{ formError }}
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                id="login-email"
+                matInput
+                placeholder=""
+                formControlName="email"
+              />
+              <mat-error *ngIf="f.email.errors?.required"
+                >Email is required</mat-error
+              >
+              <mat-error *ngIf="f.email.errors?.pattern">
+                Please record a valid email</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 pt-2">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <div class="d-flex">
+                <input
+                  type="password"
+                  placeholder=""
+                  matInput
+                  showHideInput
+                  formControlName="password"
+                  maxlength="16"
+                  id="password"
+                />
+                <i
+                  matSuffix
+                  class="material-icons"
+                  showHideTrigger="password"
+                  [showHideStatus]="{
+                    materialIcon: true,
+                    id: 'password'
+                  }"
+                ></i>
+              </div>
+              <mat-error *ngIf="f.password.errors?.required"
+                >Password is required</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="p-3 text-right col-md-12">
+            <a
+              routerLink="/auth/forget-password"
+              routerLinkActive="router-link-active"
+              class="color-55 font-sfd-r font-8"
+              >Forgot your password ?</a
+            >
+          </div>
+        </div>
+        <button
+          id="login-btn"
+          class="btn mt-4 font-sf-sb"
+          [disabled]="loading"
+          type="submit"
+        >
+          Log in
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4 p-0">
+    <img src="../../../../assets/images/login.jpg" alt="" />
+    <div class="p-5">
+      <div class="p-5 my-5"></div>
+      <div class="py-5 my-5 px-3">
+        <h4>Don't have an account?</h4>
+        <p class="mt-4 font-sfd-r color-c2 font-10">
+          Keep connected with us and login with your personal info
+        </p>
+        <a
+          class="font-sfd-m font-10"
+          routerLink="/auth/sign-up"
+          id="sign-Up"
+          routerLinkActive="router-link-active"
+        >
+          <div class="mt-5 link">
+            Sign up
+          </div></a
+        >
+      </div>
+    </div>
+    <ul class="bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>

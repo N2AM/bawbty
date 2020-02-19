@@ -1,0 +1,892 @@
+<!-- <div *ngIf='policy'> -->
+<div  id="contentToConvert" #content style="
+    width: 1208px;
+    margin: auto;
+    padding: 20px;
+">
+  <DIV id="page_1">
+<DIV id="p1dimg1">
+<IMG src="data:image/jpg;base64,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" id="p1img1"></DIV>
+
+
+<DIV class="dclr"></DIV>
+<P class="p0 ft0">Motor Private Car Third Party Only</P>
+<TABLE cellpadding=0 cellspacing=0 class="t0">
+<TR>
+	<TD class="tr0 td0"><P class="p1 ft1">Company</P></TD>
+	<TD class="tr0 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr0 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td3"><P class="p3 ft3">{{policy.PolicyDetails.CompanyName}}</P></TD>
+	<TD class="tr0 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr0 td6"><P class="p5 ft4">الشركة</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Type of Policy</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td3"><P class="p6 ft5">Motor Third Party Liability</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p7 ft4">نوع التأمين</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Policy Number</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td3"><P class="p3 ft5">P/CRO/19/8007/0220154</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p7 ft4">رقم الوثيقة</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Name of the Insured</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td3"><P class="p6 ft3">{{this.policy.PolicyHolderDetails.Name}}</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p5 ft4">اسم المؤمن له</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Insured ID/Iqama No.</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td3"><P class="p6 ft5">{{this.policy.PolicyHolderDetails.NationalID}}</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p7 ft4">رقم هوية المؤمن له</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Address</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td3"><P class="p6 ft5">{{this.policy.PolicyHolderDetails.NationalAddress}}</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p5 ft4">العنوان</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Insured Phone No.</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td3"><P class="p6 ft5">535105007</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p7 ft4">رقم ھاتف المؤمن له</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Period of insurance</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td3"><P class="p6 ft5">From {{this.policy.PolicyDetails.EffictiveDate}} To {{this.policy.PolicyDetails.PolicyExpiryDate}}</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p7 ft4">فترة التغطية</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Premium Rates</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td3"><P class="p6 ft5">As Per Attached</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p7 ft4">سعر التأمين</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Premium Amount</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr2 td3"><P class="p3 ft5">641.26</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p5 ft4">مبلغ القسط</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Policy Issuance Fees</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr1 td3"><P class="p3 ft5">0.00</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p7 ft4">رسوم اصدار البوليصة</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">VAT 5.00%</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr2 td3"><P class="p3 ft5">32.06</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p7 ft4"><SPAN class="ft1">%5.00 </SPAN>قيمة الضريبه</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Total Premium with VAT</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr1 td3"><P class="p3 ft5">673.32</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p5 ft4">المجموع بعد قيمة الضريبة</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Broker / Agent Name</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td3"><P class="p6 ft5">Bawbty - Online</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p5 ft4">المندوب <SPAN class="ft1">/ </SPAN>اسم الوسيط</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Commission</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr2 td3"><P class="p3 ft5">13.47</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p5 ft4">العمولة</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">NCD</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr1 td3"><P class="p3 ft5">71.00</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p7 ft4">خصم عدم وجود مطالبات</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Loyalty</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr2 td3"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p7 ft4">خصم الولاء</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p1 ft1">Claims Loading</P></TD>
+	<TD class="tr1 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr1 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr1 td3"><P class="p3 ft5">0.00</P></TD>
+	<TD class="tr1 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr1 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr1 td6"><P class="p5 ft4">مبلغ اضافي مقابل المطالبات المتكبد</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p1 ft1">Total Contribution</P></TD>
+	<TD class="tr2 td1"><P class="p2 ft1">:</P></TD>
+	<TD class="tr2 td2"><P class="p8 ft6">SR.</P></TD>
+	<TD class="tr2 td3"><P class="p3 ft5">673.32</P></TD>
+	<TD class="tr2 td4"><P class="p1 ft7">ر س</P></TD>
+	<TD class="tr2 td5"><P class="p4 ft1">:</P></TD>
+	<TD class="tr2 td6"><P class="p5 ft4">اجمالي مبلغ القسط</P></TD>
+</TR>
+</TABLE>
+<TABLE cellpadding=0 cellspacing=0 class="t1">
+<TR>
+	<TD class="tr3 td7"><P class="p1 ft8">Drivers Named List</P></TD>
+	<TD class="tr3 td8"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td9"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td10"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td12"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td16"><P class="p9 ft9">قائمة السائقيين المسميين</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td17"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td8"><P class="p10 ft6">Name / <SPAN class="ft7">الاسم</SPAN></P></TD>
+	<TD class="tr0 td18"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td10"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td19"><P class="p11 ft11">Date Of Birth/ <SPAN class="ft10">تاريخ الميلاد</SPAN></P></TD>
+	<TD class="tr0 td20"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td21"><P class="p12 ft13"><SPAN class="ft12">ID / </SPAN>رقم الهوية</P></TD>
+</TR>
+<TR *ngFor='let driver of policy.PolicyDetails.PolicyDrivers'>
+	<TD colspan=2 class="tr3 td22"><P class="p13 ft10">{{driver.Name}}</P></TD>
+	<TD class="tr3 td18"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td10"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td12"><P class="p14 ft12"><span>{{driver.DriverBirthDate}}</span></P></TD>
+	<TD class="tr3 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td20"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td21"><P class="p15 ft12">{{driver.DriverIDNumber}}</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr4 td23"><P class="p1 ft11">specification of the insured vehicle(s)</P></TD>
+	<TD class="tr4 td9"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td10"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td12"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr4 td16"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td24"><P class="p16 ft10">رقم اللوحة</P></TD>
+	<TD class="tr0 td25"><P class="p17 ft10">رقم الشاسیة</P></TD>
+	<TD colspan=2 class="tr0 td25"><P class="p17 ft10">رقم المحرك</P></TD>
+	<TD class="tr0 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td27"><P class="p18 ft10">سنة الصنع</P></TD>
+	<TD class="tr0 td28"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td29"><P class="p19 ft10">حجم المحرك</P></TD>
+	<TD class="tr0 td30"><P class="p17 ft10">تاريخ انتھاء رخصة السیر</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td31"><P class="p16 ft14">plate no</P></TD>
+	<TD class="tr5 td32"><P class="p17 ft11">chassis no</P></TD>
+	<TD colspan=2 class="tr5 td32"><P class="p17 ft14">engine no</P></TD>
+	<TD class="tr5 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr5 td33"><P class="p20 ft6">manufacturing year</P></TD>
+	<TD class="tr5 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr5 td34"><P class="p21 ft15">cc or hp</P></TD>
+	<TD class="tr5 td21"><P class="p17 ft6">registration expiry date</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td24"><P class="p22 ft11">{{policy.VehicleDetails.PlateNumber}}</P></TD>
+	<TD class="tr6 td25"><P class="p23 ft11">MR0FX22GXA1046511</P></TD>
+	<TD class="tr6 td35"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td36"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td27"><P class="p20 ft11">2010</P></TD>
+	<TD class="tr6 td28"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td37"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td38"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td30"><P class="p24 ft11">06/09/1443</P></TD>
+</TR>
+<TR>
+	<TD class="tr7 td31"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD class="tr7 td32"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD colspan=2 class="tr7 td32"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD class="tr7 td11"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD class="tr7 td33"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD class="tr7 td13"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD colspan=2 class="tr7 td34"><P class="p1 ft16">&nbsp;</P></TD>
+	<TD class="tr7 td21"><P class="p1 ft16">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td24"><P class="p22 ft10">نوع المركبة</P></TD>
+	<TD class="tr6 td25"><P class="p17 ft10">نوع السیارة</P></TD>
+	<TD colspan=2 class="tr6 td25"><P class="p17 ft10">الموديل</P></TD>
+	<TD class="tr6 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td27"><P class="p25 ft10">السعة الاركابیة</P></TD>
+	<TD class="tr6 td28"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr6 td29"><P class="p19 ft10">لون المركبة</P></TD>
+	<TD class="tr6 td30"><P class="p24 ft10">قیمة الملحقات</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td31"><P class="p16 ft11">body type</P></TD>
+	<TD class="tr5 td32"><P class="p23 ft14">make</P></TD>
+	<TD colspan=2 class="tr5 td32"><P class="p23 ft14">model</P></TD>
+	<TD class="tr5 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr5 td33"><P class="p25 ft6">seating capacity</P></TD>
+	<TD class="tr5 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr5 td34"><P class="p26 ft6">vehicle colour</P></TD>
+	<TD class="tr5 td21"><P class="p24 ft14">additional accessories</P></TD>
+</TR>
+<TR>
+	<TD class="tr3 td31"><P class="p22 ft11">Truck Less Than 3500 KG</P></TD>
+	<TD class="tr3 td32"><P class="p23 ft10">{{policy.VehicleDetails.Maker}}</P></TD>
+	<TD colspan=2 class="tr3 td32"><P class="p23 ft10">{{policy.VehicleDetails.Model}}</P></TD>
+	<TD class="tr3 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td33"><P class="p20 ft11">6</P></TD>
+	<TD class="tr3 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr3 td34"><P class="p19 ft10">{{policy.VehicleDetails.Color}}</P></TD>
+	<TD class="tr3 td21"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td24"><P class="p16 ft10">نوع ھیكل المركبة</P></TD>
+	<TD class="tr6 td25"><P class="p17 ft10">رقم البطاقة الجمركیة</P></TD>
+	<TD colspan=2 class="tr6 td25"><P class="p17 ft10">نوع الصلح</P></TD>
+	<TD class="tr6 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td27"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td28"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td37"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td38"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td31"><P class="p16 ft6">chassis type</P></TD>
+	<TD class="tr6 td32"><P class="p17 ft6">.custom card no</P></TD>
+	<TD colspan=2 class="tr6 td32"><P class="p17 ft6">Repair Condition</P></TD>
+	<TD class="tr6 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td33"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td39"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td31"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td32"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td32"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td33"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td39"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td21"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr3 td17"><P class="p27 ft11">Insured estimated value : SR</P></TD>
+	<TD class="tr3 td32"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=3 class="tr3 td40"><P class="p7 ft12">60000</P></TD>
+	<TD class="tr3 td33"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td21"><P class="p24 ft18">ر سعودي<SPAN class="ft17">: </SPAN>القیمة المقدرة لمؤمن له</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td17"><P class="p27 ft12">Geographical area</P></TD>
+	<TD class="tr0 td32"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td32"><P class="p17 ft14">kingdom of saudi arabia</P></TD>
+	<TD class="tr0 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td33"><P class="p20 ft10">المملكة العربية السعودية</P></TD>
+	<TD class="tr0 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td21"><P class="p28 ft18">المنطقة الجغرافية</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td22"><P class="p27 ft19">Limit of liability of the company</P></TD>
+	<TD class="tr0 td9"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td41"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td11"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td12"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td13"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td14"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td15"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td21"><P class="p9 ft20">حدود مسؤولية الشركة</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td24"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=3 class="tr6 td42"><P class="p29 ft21">In the event of an accident resulting in payment of</P></TD>
+	<TD class="tr6 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td43"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td28"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td37"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td38"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr6 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td24"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=3 class="tr2 td42"><P class="p29 ft11">compensation in accordance with the provisions of this Policy,</P></TD>
+	<TD colspan=5 rowspan=2 class="tr8 td42"><P class="p30 ft10">في حال وقوع حادث يترتب علیه دفع تعويض وفقا لحكام ھذه الوثیقة فإن الحد</P></TD>
+	<TD class="tr2 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td24"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=3 class="tr1 td42"><P class="p29 ft11">the maximum liability of the Company in a single incident and</P></TD>
+	<TD class="tr1 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD rowspan=2 class="tr9 td24"><P class="p16 ft6">section ii</P></TD>
+	<TD colspan=3 class="tr2 td42"><P class="p29 ft11">during the period of validity of this Policy in respect to Bodily</P></TD>
+	<TD class="tr2 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=4 class="tr2 td44"><P class="p31 ft10">القصى لمسئولیة الشركة في الواقعة الواحدة وخلل فترة سريان الوثیقة</P></TD>
+	<TD class="tr2 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=3 class="tr2 td42"><P class="p29 ft11">Injuries, Expenses and Physical Damages combined, shall not</P></TD>
+	<TD class="tr2 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=4 class="tr2 td44"><P class="p30 ft10">النسبة للضرار الجسدية والمصاريف والضرار المادية معا لن تتجاوز مبلغا</P></TD>
+	<TD class="tr2 td30"><P class="p17 ft10">القسم الثاني</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td24"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=3 class="tr5 td42"><P class="p29 ft17">exceed the amount of SR 10,000,000 (Saudi Riyals Ten</P></TD>
+	<TD class="tr5 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=4 class="tr5 td44"><P class="p31 ft18">، كحد أقصى<SPAN class="ft17">(</SPAN>عشرة ملایین ر سعودي<SPAN class="ft17">) </SPAN>ر <SPAN class="ft17">10,000,000 </SPAN>إجمالیا قدره</P></TD>
+	<TD class="tr5 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td24"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=3 class="tr0 td42"><P class="p29 ft11">Million), as this amount states the maximum limit of liability of the Company.</P></TD>
+	<TD class="tr0 td26"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td43"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td28"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td29"><P class="p30 ft13">لمسئولیة الشركة</P></TD>
+	<TD class="tr0 td30"><P class="p1 ft2">&nbsp;</P></TD>
+</TR>
+<TR style="
+    border-bottom: 1px solid #000;
+">
+	<TD class="tr10 td24"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td45"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td35"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td36"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td26"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td43"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td28"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td37"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td38"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td30"><P class="p1 ft22">&nbsp;</P></TD>
+</TR>
+<!-- <TR>
+	<TD class="tr11 td31"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr11 td46"><P class="p29 ft12"></P></TD>
+	<TD class="tr11 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr11 td48"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr11 td21"><P class="p1 ft2">&nbsp;</P></TD>
+</TR> -->
+</TABLE>
+</DIV>
+<DIV id="page_2">
+
+
+<TABLE cellpadding=0 cellspacing=0 class="t2">
+
+<TR>
+	<TD colspan=2 class="tr3 td49"><P class="p27 ft19">Conditions</P></TD>
+	<TD class="tr3 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td50"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td21"><P class="p31 ft23">الشروط</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft21">Limitation as to use:</P></TD>
+	<TD class="tr6 td52"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td53"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td30"><P class="p30 ft25"><SPAN class="ft21">: </SPAN>قیود إستخدام المركبة </P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr2 td51"><P class="p27 ft11">Used only for Social, domestic and pleasure purpose and for the Insured"s Business or</P></TD>
+	<TD colspan=3 class="tr2 td54"><P class="p30 ft10">يقتصر إستخدام المركبة المؤمن علیھا على الترفیه، الأغراض الإجتماعیة و الخاصة و كل ماله علاقة بعمل المؤمن له</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">Profession</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p31 ft25">أو مھنته</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td51"><P class="p27 ft15">Authorized Driver:</P></TD>
+	<TD rowspan=2 class="tr12 td52"><P class="p32 ft13">ﱠ</P></TD>
+	<TD class="tr5 td53"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td30"><P class="p31 ft27"><SPAN class="ft15">:</SPAN>السائق المصَّرح له</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 rowspan=2 class="tr2 td51"><P class="p27 ft11">Insured or any other person authorized by the Insured Provided that the person driving holds</P></TD>
+	<TD class="tr10 td53"><P class="p1 ft22">&nbsp;</P></TD>
+	<TD class="tr10 td30"><P class="p33 ft28">ﱠ</P></TD>
+</TR>
+<TR>
+	<TD colspan=3 class="tr10 td54"><P class="p31 ft29">المؤم له أو أي شخص آخر مصَّرح له من قبل َّن المؤم له شريطة أن يحمل الشخص السائق رخصة تسمح له بقیادة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 rowspan=2 class="tr6 td51"><P class="p27 ft11">a License to drive such motor vehicle, or has held and is not disqualified from holding such a</P></TD>
+	<TD class="tr13 td52"><P class="p34 ft30">ﱠ</P></TD>
+	<TD class="tr13 td53"><P class="p1 ft31">&nbsp;</P></TD>
+	<TD class="tr13 td30"><P class="p1 ft31">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=3 class="tr13 td54"><P class="p30 ft30">ذلك النوع من السیارة ، أو حامل للرخصة ولم يتم إعتباره غیر مؤ َّھل لحمل مثل تلك الرخصة.</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">license.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td49"><P class="p27 ft12">Sanction Clause</P></TD>
+	<TD class="tr0 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td50"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td21"><P class="p30 ft13">شرط العقوبات</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">The Insured member must be holding a valid Saudi Driving License matching with the same</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p30 ft25">يجب على المؤّمن له أن يحمل رخصة قیادة سعودية سارية المفعول ومطابقة لنوع السیارة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">category.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft6">Cancellation: Policy cancellation will based on wasted days as per the following formula: (365 -</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft10">الإشتراك <SPAN class="ft11">×365 / (</SPAN>- الأيام المستھلكة) <SPAN class="ft11">- 365 ) :</SPAN>يتم إلغاء الوثیقة على أساس تناسبي وفق المعادلة التالیة: <SPAN class="ft11">:</SPAN>اللإلغاء</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr2 td51"><P class="p27 ft11">wasted days)/365 X the Contribution after deduction of administration fees (Maximum SR</P></TD>
+	<TD colspan=3 class="tr2 td54"><P class="p30 ft10">الإشتراك المتبقي. ويستثنى من إلزام الشركة بدفع الإشتراك<SPAN class="ft11">= (</SPAN>ر كحد أقصى <SPAN class="ft11">25 </SPAN>مبلغ<SPAN class="ft11">) </SPAN>بعد خصم الرسوم الإدارية </P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td51"><P class="p27 ft11">25). The insurance company shall not be required to pay the remaining contribution fees in</P></TD>
+	<TD colspan=3 class="tr5 td54"><P class="p31 ft18">المتبقي في حال وجود مطالبة متعلقة بالوثیقة المزمع إلغاؤھا وعلى ذات المركبة تزيد قیمتھا عن قیمة المبلغ</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr2 td51"><P class="p27 ft11">case of ongoing claim related to the policy to be canceled and on the very same vehicle that</P></TD>
+	<TD class="tr2 td52"><P class="p1 ft32">&nbsp;</P></TD>
+	<TD colspan=2 class="tr2 td55"><P class="p31 ft33">المفترض إعادته وفق طريقة الحساب أعلاه</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">exceeds the value of the amount to be returned as per the above formula.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft6">The Driver: Anybody driving the vehicle and his age is 18 years (Hijri) and above and holding a</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p30 ft35">سائق المركبة<SPAN class="ft34">:</SPAN>كل من يقود المركبة و يكون عمره <SPAN class="ft34">18 </SPAN>سنة ھجرية وما فوق و يحمل رخصة قیادة </P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">driving license.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td49"><P class="p27 ft12">Authorization letter is required to drive the company vehicle</P></TD>
+	<TD colspan=3 class="tr0 td56"><P class="p30 ft13">يجب حمل خطاب تفويض في حال قیادة سیارة الشركة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr3 td49"><P class="p27 ft19">Exclusions</P></TD>
+	<TD class="tr3 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td50"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td21"><P class="p31 ft23">الإستثناءات</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">Loss of or damage to insured vehicle, or to property belonging to the Insured or the Driver</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft18">الخسارة أو الضرر للمركبة المؤمن علیھا، أو للممتلكات العائدة إلى أي من المؤمن له أو السائق داخل المركبة أو</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr2 td51"><P class="p27 ft11">inside or outside the vehicle and loss of or damage to goods transported by the insured</P></TD>
+	<TD colspan=3 class="tr2 td54"><P class="p31 ft18">خارجھا، أو التي تلحق بالبضائع المنقولة بواسطة المركبة أو تلك التي في عھدته أو تحت إشرافه أو امانة لديه</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">vehicle or under his care, custody and control.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td49"><P class="p27 ft12">Death or Bodily Injury to the Insured or Driver</P></TD>
+	<TD class="tr0 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td57"><P class="p31 ft18">الوفاة أو الاصابة الجسدية للمؤمن له أو السائق</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">Whilst the insured vehicle is used in any type of racing (including test runs, rallies, speed</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft18">ويشمل ذلك تجارب الآداء، الرالیات، تجارب السرعة،<SPAN class="ft17">)</SPAN>إذا كانت المركبة مستعملة في أي نوع من أنواع السباقات</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td51"><P class="p27 ft11">trials, trial runs and endurance tests), in determining the takeoff speed or in testing the ability</P></TD>
+	<TD colspan=3 class="tr5 td54"><P class="p31 ft27">و في تحديد سرعة الإنطلاق أو في تجربة اختبار القدرة <SPAN class="ft15">(</SPAN>إختبارات التحمل</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td49"><P class="p27 ft15">to drive.</P></TD>
+	<TD class="tr5 td47"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td50"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td21"><P class="p1 ft26">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td51"><P class="p27 ft11">Whilst the insured vehicle is used in areas which public is usually not allowed to enter such as</P></TD>
+	<TD colspan=3 class="tr0 td54"><P class="p31 ft18">إذا كانت المركبة مستعملة ضمن المناطق التي لا يسمح عادة للعامة بالقیادة فیھا داخل المطارات أو الموانئ</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr2 td51"><P class="p27 ft11">airports or seaports, except if the vehicle is used for commercial purposes in the areas</P></TD>
+	<TD colspan=3 class="tr2 td54"><P class="p31 ft36">البحرية ما لم تكن المركبة مستخدمة لأغراض تجارية في النطاق المسموح به</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">allowed.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">If the Insured or Driver declares to bear responsibility for the accident undeservedly for the</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft25">إقرار المؤمن له أو السائق بتحمل مسئولیة الحادث دون وجه حق بقصد الإضرار بالشركة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td49"><P class="p27 ft15">purpose to cause damage to the company</P></TD>
+	<TD class="tr5 td47"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td50"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td21"><P class="p1 ft26">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td51"><P class="p27 ft11">If the insured act in collusion with third parties on a fabricated accident substantiated in the</P></TD>
+	<TD colspan=3 class="tr0 td54"><P class="p30 ft18">تواطؤ المؤمن له مع الغیر على حادث مفتعل والمثبت في تقرير الحادث الصادر عن الجھة المخولة بمباشرة الحادث</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td49"><P class="p27 ft15">accident report issued by the authority that attended the accident.</P></TD>
+	<TD class="tr5 td47"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td50"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td21"><P class="p1 ft26">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr3 td49"><P class="p27 ft12">Drifting</P></TD>
+	<TD class="tr3 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td50"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td21"><P class="p31 ft13">التفحیط</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td49"><P class="p27 ft12">If the insured vehicle being used or operated as a tool of trade</P></TD>
+	<TD class="tr0 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr0 td57"><P class="p31 ft10"> عمل كآلیات مشغلة أو مستعملة المركبة كانت إذا
+</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">Fines or financial penalties, warranties or guarantees that may be imposed because of the</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft18">الغرامات أو العقوبات المالیة، أو الضمانات، أو الكفالات التي قد تفرض بسبب الحادث على المؤمن له أو السائق
+</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">accident to the Insured or the Driver</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr0 td49"><P class="p27 ft12">Excluding Nuclear Energy Risk Clause</P></TD>
+	<TD class="tr0 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td50"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr0 td21"><P class="p31 ft13">النووية الطاقة مخاطر إستثناء
+</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr3 td49"><P class="p27 ft12">Excluding Information Technology Hazards.</P></TD>
+	<TD class="tr3 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td50"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD class="tr3 td21"><P class="p31 ft13">إستثناء مخاطر تقنیة المعلومات</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">The Company shall not be liable for any loss or damage to Contractors" Plant & Equipment"s</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft18">الشركة غیر مسئولة عن أي خسارة أو ضرر لمعدات و الیات المقاولین الغیر مصرح لھا بالسیر على الطرقات العامة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td49"><P class="p27 ft21">not on a public road.</P></TD>
+	<TD class="tr6 td47"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td50"><P class="p1 ft24">&nbsp;</P></TD>
+	<TD class="tr6 td21"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">Excluding Institute Chemical, Biological, Biochemical, Electromagnetic Weapons and Cybre</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft18">استثناء الأسلحة الكیماوية، البیولوجیة، الكیماوية الحیوية، الكھرومغناطیسیة وھجمات القرصنة الإلكترونیة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td49"><P class="p27 ft15">Attack Clause</P></TD>
+	<TD class="tr5 td47"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td50"><P class="p1 ft26">&nbsp;</P></TD>
+	<TD class="tr5 td21"><P class="p1 ft26">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr3 td49"><P class="p27 ft12">Excluding Riot, Strike & Civil Commotion</P></TD>
+	<TD class="tr3 td47"><P class="p1 ft2">&nbsp;</P></TD>
+	<TD colspan=2 class="tr3 td57"><P class="p31 ft18">إستثناء الشغب، الإضراب، الإضطرابات المدنیة</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr6 td51"><P class="p27 ft11">The ownership, operation, maintenance or use of the vehicle the principle use of which is :</P></TD>
+	<TD colspan=3 class="tr6 td54"><P class="p31 ft25"><SPAN class="ft21">:</SPAN>إستثناء ملكیة، تشغیل، صیانة أو إستخدام أي مركبة تستخدم في
+</P></TD>
+</TR>
+<TR>
+	<TD colspan=2 class="tr5 td51"><P class="p27 ft6">a. The transportation of high explosives such as <span>nitro-glycerine,</span> dynamite or any other similar</P></TD>
+	<TD colspan=3 class="tr5 td54"><P class="p31 ft27">أ) نقل وترحیل المواد شديدة الإنفجار مثل النیتروجلسرين، الدينامیت أو أي مواد متفجرة مماثلة <SPAN class="ft15"></SPAN></P></TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV id="page_3">
+<DIV id="p3dimg1">
+<IMG src="data:image/jpg;base64,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" id="p3img1"></DIV>
+<DIV id="id3_1">
+<TABLE cellpadding=0 cellspacing=0 class="t2">
+<TR>
+	<TD class="tr0 td51"><P class="p27 ft12">explosive.</P></TD>
+	<TD class="tr0 td54"><P class="p35 ft10">ب) نقل المواد الكیماوية أو الغازات السائلة، المضغوطة أو الغازية <SPAN class="ft11"></SPAN></P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td51"><P class="p27 ft17">b. The transportation of chemicals or gases in liquid, compressed or gaseous form</P></TD>
+	<TD class="tr6 td54"><P class="p31 ft35"> <SPAN class="ft34">23 </SPAN>ت) نقل النفط أو الوقود السائل ماعدا المواد التى درجة اشتعالھا تساوي او تزيد عن <SPAN class="ft34"></SPAN></P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft11">c. The bulk transportation of oil or liquefied gas, except substance with a flash point of 23</P></TD>
+	<TD class="tr2 td54"><P class="p31 ft36">ث)نقل المخلفات الخطرة<SPAN class="ft37"></SPAN></P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft37">degree celcious or higher.</P></TD>
+	<TD class="tr2 td54"><P class="p1 ft32">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td49"><P class="p27 ft21">d. The transportation of hazardous waste.</P></TD>
+	<TD class="tr6 td56"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td51"><P class="p27 ft11">Excluding Loss of use, wear and tear, depreciation, betterment or mechanical or electrical</P></TD>
+	<TD class="tr6 td54"><P class="p31 ft35">استثناء خسارة الإستخدام، القدم والبلي، الإستھلاك، التحسینات أو الأعطال المیكانیكیة أو الكھربائیة</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td49"><P class="p27 ft21">breakdowns.</P></TD>
+	<TD class="tr6 td56"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td51"><P class="p27 ft11">Excluding whilst the vehicle is used as or for Hire and/or reward, Taxi, Rent A Car, Limousine,</P></TD>
+	<TD class="tr6 td54"><P class="p31 ft10">إستثناء إستخدام المركبة في التأجیر الخاص و<SPAN class="ft11">/</SPAN>أو كمكافأة، تاكسي، تأجیر السیارات الیومي، الأجرة العامة، باصات</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td49"><P class="p27 ft21">Publicly owned and transport buses, Learning & Lease Vehicles.</P></TD>
+	<TD class="tr6 td56"><P class="p31 ft25">المواصلات العامة، التأجیر المنتھي بالتملیك وسیارات تعلیم القیادة</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td49"><P class="p27 ft12">Excluding Radioactive Contamination Clause</P></TD>
+	<TD class="tr0 td56"><P class="p31 ft13"> الإشعاعي التلوث إستثناء
+</P></TD>
+</TR>
+<TR>
+	<TD class="tr3 td49"><P class="p27 ft12">Excluding Political Risk, Sabotage & Terrorism</P></TD>
+	<TD class="tr3 td56"><P class="p31 ft13">إستثناء الأخطار السیاسیة، التخريب والأرھاب</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td49"><P class="p27 ft12">Excluding the collision of the vehicle"s load with the vehicle itself</P></TD>
+	<TD class="tr0 td56"><P class="p31 ft13"> نفسھا المركبة على التي بالحمولة المركبة إصطدام إستثناء
+</P></TD>
+</TR>
+<TR>
+	<TD class="tr3 td49"><P class="p27 ft12">Excluding Vehicles of Armed forces and/or law enforcement purposes</P></TD>
+	<TD class="tr3 td56"><P class="p31 ft13">أو سلطات إنفاذ القانون<SPAN class="ft12"></SPAN>استثناء مركبات القوات العسكرية والأمنیة و/</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td49"><P class="p27 ft12">Excluding Commercial vehicles used on airports or airfields</P></TD>
+	<TD class="tr0 td56"><P class="p31 ft13">استثناء المركبات التجارية المستخدمة في المطارات أو مھابط الطائرات</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td49"><P class="p27 ft12">Excluding Public Emergency Service Vehicles</P></TD>
+	<TD class="tr0 td56"><P class="p31 ft13">إستثناء مركبات خدمات الطوارئ العامة</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td51"><P class="p27 ft21">Any liability or expenses arising directly or indirectly from the following:</P></TD>
+	<TD class="tr6 td54"><P class="p31 ft25"><SPAN class="ft21">:</SPAN>أي مسئولیة أو مصاريف تنشأ نتیجة مباشرة أو غیر مباشرة من الآتي</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td51"><P class="p27 ft11">a. War, invasion, foreign enemy acts, hostilities or warlike operations (whether war be</P></TD>
+	<TD class="tr5 td54"><P class="p31 ft10">أ) الحرب أو الغزو أو أعمال العدوان الأجنبي أو الأعمال العدوانیة أو الأعمال شبه الحربیة<SPAN class="ft11">
+
+  </SPAN>  ( <SPAN class="ft11">سواء أعلنت الحرب أم لم</SPAN></P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft37">declared or not), civil war.</P></TD>
+	<TD class="tr2 td54"><P class="p30 ft36">  تعلن<SPAN class="ft37">)</SPAN>أو الحرب الأھلیة</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td51"><P class="p27 ft11">b. Rebellion, military or civil insurrection, insurgence, revolution, military or usurped power,</P></TD>
+	<TD class="tr5 td54"><P class="p31 ft10">ب) التمرد أو الإنتفاضة العسكرية أو الشعبیة أو العصیان أو الثورة أو السلطة الغاصبة أو الأحكام العرفیة أو حالة الحصار <SPAN class="ft11"></SPAN></P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft17">martial laws or state of siege, or any incident or cause that leads to declaration or</P></TD>
+	<TD class="tr2 td54"><P class="p31 ft18">أو أي من الأحداث أو الأسباب التي تؤدي إلى إعلان أو استمرار الأحكام العرفیة أو حالة الحصار أو أعمال التخريب</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft11">continuation of martial laws, state of siege, acts of vandalism and terrorist acts committed by</P></TD>
+	<TD class="tr2 td54"><P class="p30 ft10">والأرھاب التي يرتكبھا شخص أو أشخاص يعملون بصفة منفردة أو نیابة عن أو على صلة بأي منظمة إرھابیة. ويقصد</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td51"><P class="p27 ft11">a person(s) acting on their own behalf or on behalf of or in connection with any terrorist</P></TD>
+	<TD class="tr5 td54"><P class="p30 ft10">بالأرھاب استخدام العنف لأغراض سیاسیة أو فكرية أو فلسفیة أو عنصرية أو عرقیة أو اجتماعیة أو دينیة. ويشمل</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft11">organization. For the purpose of this exclusion, terrorism shall mean the use of violence for</P></TD>
+	<TD class="tr2 td54"><P class="p31 ft18">استخدام العنف وضع العامة و/أو شريحة منھم في حالة خوف، أو التأثیر على، و/أو التسبب في اضطراب، و/أو</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td51"><P class="p27 ft11">political, intellectual, philosophical, racist, ethnic, social or religious purposes. And using</P></TD>
+	<TD class="tr5 td54"><P class="p31 ft10">التدخل في أي عملیات و/أو أنشطة أو سیاسات خاصة بالحكومة، أو التسبب في اضطراب يؤثر سلبا على الإقتصاد</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft11">violence includes terrifying all or part of the public, or influencing, and/or resulting in strike,</P></TD>
+	<TD class="tr2 td54"><P class="p31 ft36">الوطني أو .أي من قطاعاته</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td51"><P class="p27 ft6">and/or interfering in any operation and/or government related activity or policy, or resulting in</P></TD>
+	<TD class="tr5 td54"><P class="p31 ft27">ت) الإضراب أو الشغب أو الإضطرابات المدنیة أو العمالیة</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft37">a strike that negatively affects the national economy or any of its sectors.</P></TD>
+	<TD class="tr2 td54"><P class="p31 ft10">ث) ما ينتج بسبب أو ينشأ عن أو تكون ساھمت فیه الأسلحة النووية أو الإشعاعات الآيونیة أو التلوث بالإشعاع من</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft37">c. Strike, riot, civil commotion, workers upheaval.</P></TD>
+	<TD class="tr2 td54"><P class="p31 ft18">أي وقود أو أية نفايات نووية ناتجة عن احتراق وقود نووي، .ولأغراض ھذا الإستثناء فإن الاحتراق يشمل أي عملیة</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td51"><P class="p27 ft11">d. Any liability or expenses directly or indirectly incurred, caused, resulting, or contributed to</P></TD>
+	<TD class="tr5 td54"><P class="p31 ft27">نشطار نووي</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft11">by nuclear weapons, ionic radiations, irradiating pollution from any nuclear fuel or waste</P></TD>
+	<TD class="tr2 td54"><P class="p30 ft36">ج) الكوارث الطبیعیة مثل الأعاصیر، أو الزلازل، أو الفیضانات، أو البراكین</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft11">resulting from the combustion of nuclear fuel. For the purpose of this exclusion, combustion</P></TD>
+	<TD class="tr2 td54"><P class="p1 ft32">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td51"><P class="p27 ft37">shall include any nuclear fission.</P></TD>
+	<TD class="tr2 td54"><P class="p1 ft32">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td49"><P class="p27 ft34">e. Any natural disaster such as hurricanes, earthquakes, floods or volcanoes</P></TD>
+	<TD class="tr6 td56"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td58"><P class="p1 ft38">&nbsp;</P></TD>
+	<TD class="tr1 td59"><P class="p1 ft38">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr3 td49"><P class="p27 ft19">Warranties</P></TD>
+	<TD class="tr3 td56"><P class="p31 ft23">الاشتراطات</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td49"><P class="p27 ft12">Premium to be paid fully in advance</P></TD>
+	<TD class="tr0 td56"><P class="p30 ft13"> مقدما بالكامل التأمین قسط سداد يجب
+</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td51"><P class="p27 ft17">Cover is subject to terms, conditions and exclusions of the Unified Compulsory Motor</P></TD>
+	<TD class="tr6 td54"><P class="p30 ft35">تخضع التغطیة التأمینیة لشروط و أحكام وإستثناءات الوثیقة الموحدة للتأمین الإلزامي على المركبات</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td49"><P class="p27 ft21">Insurance Policy.</P></TD>
+	<TD class="tr6 td56"><P class="p1 ft24">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr4 td60"><P class="p29 ft12">Signed for and on behalf of</P></TD>
+	<TD class="tr4 td61"><P class="p31 ft13">التوقیع بالنیابة عن</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td60"><P class="p29 ft37">Solidarity Saudi Takaful Company</P></TD>
+	<TD class="tr2 td61"><P class="p30 ft36">شركة سولیدرتي السعودية للتكافل</P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td60"><P class="p29 ft12">Authorised Signatory</P></TD>
+	<TD class="tr0 td61"><P class="p31 ft13">التوقیع المعتمد</P></TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV id="id3_2">
+<TABLE cellpadding=0 cellspacing=0 class="t3">
+<TR>
+	<TD class="tr11 td62"><P class="p1 ft12">Date: 08/10/2019</P></TD>
+	<TD class="tr11 td63"><P class="p7 ft11">08/10/2019:<SPAN class="ft10">التاريخ</SPAN></P></TD>
+</TR>
+<TR>
+	<TD class="tr0 td62"><P class="p1 ft12">Company Seal</P></TD>
+	<TD class="tr0 td63"><P class="p7 ft13">ختم الشركة</P></TD>
+</TR>
+</TABLE>
+</DIV>
+</DIV>
+<DIV id="page_4">
+
+
+<P class="p36 ft40"> يرجي الإطلع على الضوابط الشرعیة لھیئة الرقابة الشرعیة في قرارھا رقم<SPAN class="ft39">( 03 ) </SPAN>المنشور في موقع الشركة</P>
+</DIV>
+</div>
+<!-- </div> -->

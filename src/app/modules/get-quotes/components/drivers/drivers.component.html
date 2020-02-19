@@ -1,0 +1,44 @@
+<div
+  *ngIf="!editDriver"
+  class="col-md-11 row col-11 p-0  justify-content-between py-2 mx-auto "
+>
+  <div *ngFor="let driver of drivers" class="row m-0 bg-f3 my-3 py-2 w-100">
+    <div class="col-md-8 row m-0 bg-f3">
+      <div class="col-md-7 p-0 d-flex justify-content-between">
+        <div class="pt-2">
+          <span class="color-7e font-sfd-m font-4">Driver name: </span>
+          <span class="color-2 font-sfd-m font-4">{{
+            driver.driver_name
+          }}</span>
+        </div>
+        <img
+          class="divider"
+          src="../../../../../assets/icons/divider.svg"
+          alt=""
+        />
+      </div>
+      <div class="col-md-5 pt-2">
+        <span class="color-7e font-sfd-m font-4">National ID:</span>
+        <span class="color-2 font-sfd-m font-4">{{
+          driver.driver_national_id
+        }}</span>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex justify-content-between bg-f3">
+      <button class="btn" (click)="editDriverFn(driver)">
+        <img src="../../../../../assets/icons/edit-ic.svg" alt="" />
+        <span class="font-2 font-sfd-m color-55 mx-2">Edit</span>
+      </button>
+      <button class="btn" (click)="delete(driver)">
+        <img src="../../../../../assets/icons/delete-ic.svg" alt="" />
+        <span class="font-2 font-sfd-m color-38 mx-2">Delete</span>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- <app-driver
+    class=" w-100 d-flex p-2 m-2  justify-content-between"
+    *ngFor="let driver of drivers; let i = index"
+    [driver]="driver"
+    (editDriverEmitter)="openForm($event)"
+  ></app-driver> -->

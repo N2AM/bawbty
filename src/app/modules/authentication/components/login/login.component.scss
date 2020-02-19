@@ -1,0 +1,123 @@
+.row {
+  margin: 0;
+}
+h2 {
+  font-size: 2.5em;
+}
+.col-md-4 {
+  height: 100vh;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+  .p-5 {
+    color: #fff;
+    position: relative;
+    z-index: 9;
+  }
+  .link {
+    width: 50%;
+    border: 3px solid;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    color: #fff;
+    a {
+      color: #fff !important;
+      font-family: Montserrat-Bold;
+    }
+    border-color: #fff;
+  }
+}
+#logo {
+  width: 150px;
+  height: 60px;
+}
+mat-form-field {
+  width: 100%;
+  img {
+    width: 24px;
+    height: 12px;
+    object-fit: contain;
+  }
+}
+.btn {
+  background: #018064;
+  color: #fff;
+  font-family: Montserrat-regular;
+  font-weight: 600;
+  margin: auto;
+  padding: 12px 70px;
+}
+
+.bubbles {
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  // width: 100%;
+  height: 25%;
+  z-index: 1;
+  transform: translateZ(0);
+  li {
+    position: absolute;
+    display: block;
+    animation: square 3s ease-in-out infinite alternate both;
+  }
+  li:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    transform: rotate(-30deg);
+    right: 10px;
+    bottom: -5px;
+    border: 4px solid #018064;
+  }
+  li:nth-child(2) {
+    width: 20px;
+    height: 20px;
+    transform: rotate(-20deg);
+    right: 0px;
+    bottom: 50px;
+    // animation-duration: 7s;
+    border: 3px solid #018064;
+  }
+  li:nth-child(3) {
+    width: 10px;
+    height: 10px;
+    transform: rotate(20deg);
+    right: 30px;
+    bottom: 70px;
+    border: 1.5px solid #018064;
+    // animation-duration: 3s;
+  }
+}
+// @keyframes square {
+//   0% {
+//     transform: rotate(-30deg);
+//   }
+//   50% {
+//     // transform: translateY(0);
+//   }
+//   100% {
+//     transform: rotate(-630deg);
+//   }
+// }
+@keyframes square {
+  0% {
+    opacity: 0;
+    // transform: rotate(-30deg);
+  }
+  // 50% {
+  // transform: translateY(0);
+  // }
+  // 100% {
+  // transform: rotate(-630deg);
+  // }
+}
+.col-md-10 {
+  a {
+    // color: #000;
+  }
+}

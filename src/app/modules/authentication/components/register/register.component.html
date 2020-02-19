@@ -1,0 +1,227 @@
+<div class="row">
+  <div class="col-md-4 col-12 p-0">
+    <img src="../../../../assets/images/register.jpg" alt="" />
+    <div class="p-5 side">
+      <div id="home-link">
+        <a routerLink="/" routerLinkActive="router-link-active">
+          <img
+            id="logo"
+            src="../../../../assets/images/logo.png"
+            alt="logo"
+            class="ml-3"
+        /></a>
+      </div>
+
+      <div class="p-5 my-5"></div>
+      <div class="py-5 my-5 px-3">
+        <h4>Already have an account!</h4>
+        <p class="mt-4 font-sfd-r color-c2 font-10">
+          Keep connected with us and login with your personal info
+        </p>
+        <a
+          class="font-sfd-m font-10"
+          routerLink="/auth/login"
+          routerLinkActive="router-link-active"
+        >
+          <div class="mt-5 link">
+            Login
+          </div></a
+        >
+      </div>
+    </div>
+    <ul class="bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="col-md-8 col-12 px-0 text-center">
+    <div class="py-5">
+      <h1>Create Account</h1>
+      <!-- [formGroup] ="RegisterationForm"  -->
+      <form class="mt-4" [formGroup]="RegisterationForm" (ngSubmit)="submit()">
+        <div class="row  col-md-9 col-12 m-auto">
+          <div
+            *ngIf="formError && formError !== ''"
+            class="col-md-12 mb-4 mx-auto alert alert-danger font-sfd-m"
+          >
+            {{ formError }}
+          </div>
+          <div class="col-md-12 pb-2">
+            <mat-form-field class="my-2">
+              <mat-label>Full Name</mat-label>
+              <input
+                type="text"
+                formControlName="fullName"
+                matInput
+                id="fullName"
+                placeholder=""
+                maxlength="20"
+                onkeypress="return /^[a-zA-Z ]+$/i.test(event.key)"
+              />
+              <mat-error *ngIf="f.fullName.errors?.required"
+                >Full Name required</mat-error
+              >
+              <mat-error *ngIf="f.fullName.errors?.pattern"
+                >Please record a valid Full Name</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 pb-2">
+            <mat-form-field class="my-2">
+              <mat-label>Email</mat-label>
+              <input
+                formControlName="email"
+                matInput
+                placeholder=""
+                id="email"
+              />
+              <mat-error *ngIf="f.email.errors?.required"
+                >Email address is required</mat-error
+              ><mat-error *ngIf="f.email.errors?.pattern"
+                >Please record a valid email</mat-error
+              ><mat-error
+                *ngIf="!f.email.errors?.required && f.email.errors?.exist"
+                >The Email address is already exist in the System and used
+                before
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 pb-2">
+            <mat-form-field class="my-2">
+              <mat-label>Password</mat-label>
+              <div class="d-flex">
+                <input
+                  id="loginpassword"
+                  type="password"
+                  placeholder=""
+                  matInput
+                  showHideInput
+                  formControlName="password"
+                  minlength="8"
+                  maxlength="16"
+                />
+                <!-- [matTooltipDisabled]="!f.password.invalid" -->
+                <i
+                  matSuffix
+                  class="material-icons"
+                  showHideTrigger="loginpassword"
+                  [showHideStatus]="{
+                    materialIcon: true,
+                    id: 'loginpassword'
+                  }"
+                ></i>
+              </div>
+              <mat-error *ngIf="f.password.errors?.required"
+                >Password is required</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  !f.password.errors?.required &&
+                  RegisterationForm.get('password').hasError('minlength')
+                "
+              >
+                Please record a valid Password with at least 8
+                characters</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  !f.password.errors?.required &&
+                  !RegisterationForm.get('password').hasError('minlength') &&
+                  f.password.errors?.hasNumber
+                "
+                >Please record a valid Password with at least one
+                Number</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  !f.password.errors?.required &&
+                  !RegisterationForm.get('password').hasError('minlength') &&
+                  !f.password.errors?.hasNumber &&
+                  f.password.errors?.hasCapitalCase
+                "
+                >Please record a valid Password with at least one upper
+                case</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  !f.password.errors?.required &&
+                  !RegisterationForm.get('password').hasError('minlength') &&
+                  !f.password.errors?.hasNumber &&
+                  !f.password.errors?.hasCapitalCase &&
+                  f.password.errors?.hasSmallCase
+                "
+                >Please record a valid Password with at least one lower
+                case</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  !f.password.errors?.required &&
+                  !RegisterationForm.get('password').hasError('minlength') &&
+                  !f.password.errors?.hasNumber &&
+                  !f.password.errors?.hasCapitalCase &&
+                  !f.password.errors?.hasSmallCase &&
+                  f.password.errors?.hasSpecialCharacters
+                "
+                >Please record a valid Password with at least one special
+                characters</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 pb-2">
+            <mat-form-field class="my-2">
+              <mat-label>Mobile Number</mat-label>
+              <span matPrefix>+966 &nbsp;</span>
+              <input
+                id="phoneNumber"
+                type="number"
+                formControlName="phoneNumber"
+                matInput
+                placeholder=""
+                min="100000000"
+                onKeyPress="if(this.value.length==9)return false;"
+              />
+              <mat-error *ngIf="f.phoneNumber.errors?.required"
+                >Mobile Number is required</mat-error
+              >
+              <mat-error *ngIf="f.phoneNumber.errors?.pattern"
+                >Please record a valid Mobile Number</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  !f.phoneNumber.errors?.pattern && f.phoneNumber.errors?.min
+                "
+                >Please record a valid Mobile Number with 9 numbers</mat-error
+              ><mat-error
+                *ngIf="
+                  !f.phoneNumber.errors?.required &&
+                  f.phoneNumber.errors?.phoneExist
+                "
+              >
+                Mobile Number is already exist in the System and used
+                before</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-12 pb-2 mt-3">
+            <p id="policy" class="font-11 color-7e font-sfd-r mb-0">
+              By signing up you accept
+              <strong class=" color-2"> the Declaration </strong>and
+              <strong class=" color-2">the Terms of the Policy.</strong>
+            </p>
+          </div>
+
+          <button
+            id="signUp"
+            [disabled]="submitted"
+            class="btn mt-5 "
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

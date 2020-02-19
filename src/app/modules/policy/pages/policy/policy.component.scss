@@ -1,0 +1,31 @@
+.fail {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+.mat-radio-button {
+  display: block;
+}
+.theme-green-border {
+  border: 1px solid #018064;
+  border-radius: 2px;
+}
+.theme-grey-border {
+  border: 1px solid #c2c2c2;
+  border-radius: 2px;
+}
+.shadowed {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.pay-methods {
+  img:nth-child(1) {
+    width: 5em;
+    height: 5em;
+    object-fit: contain;
+  }
+  img:nth-child(2) {
+    width: 9em;
+    height: 5em;
+    object-fit: contain;
+  }
+}

@@ -1,0 +1,111 @@
+<div class="text-center">
+  <div>
+    <app-policy-details
+      (ibanEmitter)="getIban($event)"
+      [continue]="continue"
+      [ibanVal]="iban"
+      [payCheck]="payCheck"
+      [policy]="policy"
+    ></app-policy-details>
+  </div>
+
+  <button
+    *ngIf="!payCheck"
+    (click)="getRec()"
+    [disabled]="!(continue && iban)"
+    class="h-100 m-5"
+    id="submit-policyForm"
+    mat-raised-button
+  >
+    Continue
+  </button>
+  <div *ngIf="payCheck" class="pb-4">
+    <div class="container mt-4 text-left">
+      <h6 class="color-2 font-10 font-sf-sb mb-3">Select Payment Method</h6>
+      <div class="bg-ff p-3 shadowed">
+        <div>
+          <mat-radio-group
+            [(ngModel)]="credit"
+            aria-labelledby="radio-group-label"
+            class="radio-group"
+          >
+            <div class="theme-green-border mb-3 pb-5">
+              <mat-radio-button
+                value="credit"
+                class="color-2 font-sf-sb font-3 px-2 bg-f2 mb-3 "
+              >
+                <div class="row m-0 justify-content-between ">
+                  <h6 class="color-2 font-sf-sb font-2 pt-4 mt-2">
+                    Credit Card / MADA (debit card)
+                  </h6>
+                  <div class="d-flex pay-methods">
+                    <img src="../../../../../assets/icons/Mada.png" alt="" />
+                    <img
+                      class="px-2"
+                      src="../../../../../assets/icons/Visa.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </mat-radio-button>
+
+              <div *ngIf="!success">
+                <form
+                  ngNoForm
+                  target="_blank"
+                  action="{{ baseURL }}"
+                  class="paymentWidgets"
+                  data-brands="VISA MASTER "
+                  method="post"
+                ></form>
+                <!-- STC_PAY -->
+                <div class="mt-4 px-4 ">
+                  <mat-checkbox (change)="checking($event)"
+                    ><span class="color-7e font-5 font-sf-r"
+                      >I accept the Terms and Conditions</span
+                    >
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="theme-grey-border my-3">
+              <mat-radio-button
+                disabled="true"
+                class="color-2 font-sf-sb font-3 px-2"
+                value="esal"
+              >
+                <div class="row m-0 justify-content-between ">
+                  <h6 class="color-2 font-sf-sb font-2 pt-4 mt-2">
+                    Esal
+                  </h6>
+                  <div class="d-flex pay-methods">
+                    <img
+                      src="../../../../../assets/icons/brands_logo_esal.svg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </mat-radio-button>
+            </div>
+            <div class="theme-grey-border">
+              <mat-radio-button
+                disabled="true"
+                class="color-2 font-sf-sb font-3 px-2"
+                value="esal"
+              >
+                <div class="row m-0 justify-content-between ">
+                  <h6 class="color-2 font-sf-sb font-2 pt-4 mt-2">
+                    STC pay
+                  </h6>
+                  <div class="d-flex pay-methods">
+                    <img src="../../../../../assets/icons/stcpay.png" alt="" />
+                  </div>
+                </div>
+              </mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="content">
+  <form
+    class="message text-center mt-5"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="verifyForm"
+  >
+    <img src="../../../../../assets/icons/verification.svg" alt="message" />
+    <h4 class="color-2 font-sf-sb font-10 mb-4 mt-5">
+      Enter verification code
+    </h4>
+    <span
+      class="color-7e font-8 font-sf-m col-md-12 p-0 pt-3 mx-auto text-center"
+    >
+      A text message with the verification code has been sent to
+    </span>
+    <span class="font-sf-m color-2 font-7">{{ phone }}</span>
+    <div
+      *ngIf="formError && formError !== ''"
+      class="w-75 mb-3 col-md-12 m-2 mx-auto alert alert-danger font-sfd-m"
+    >
+      {{ formError }}
+    </div>
+    <div id="divOuter" class="py-4">
+      <div id="divInner">
+        <input
+          id="partitioned"
+          formControlName="smsCode"
+          max="999999"
+          min="000000"
+          name="smscode"
+          type="number"
+          onKeyPress="if(this.value.length==6) return false;"
+        />
+        <div
+          class="err p-3 text-start font-sf-sb font-4"
+          *ngIf="submitted && f.smsCode.errors?.required"
+        >
+          code is required
+        </div>
+        <div
+          class="err p-3 text-start font-sf-sb font-4"
+          *ngIf="
+            (submitted &&
+              !f.smsCode.errors?.required &&
+              f.smsCode.errors?.min) ||
+            (submitted && !f.smsCode.errors?.required && f.smsCode.errors?.max)
+          "
+        >
+          Code must be 6 digits
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <span *ngIf="!countHide">
+        <span class="font=sf-sb font-7 color-7e"
+          >Resend (<countdown
+            #cd
+            [config]="{ leftTime: 20 }"
+            (event)="handleEvent($event)"
+          ></countdown
+          >)</span
+        >
+      </span>
+      <button type="submit" class="h-100 mx-5 my-3" mat-raised-button>
+        Verify
+      </button>
+    </div>
+  </form>
+
+  <div class="bl-logo">
+    <img src="../../../../../assets/icons/logo.svg" alt="" />
+  </div>
+</div>

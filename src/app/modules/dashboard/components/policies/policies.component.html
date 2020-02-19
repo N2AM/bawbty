@@ -1,0 +1,458 @@
+<div class="container pt-2 pb-5">
+  <div class="row m-0 filter-div">
+    <span class="font-sf-sb font-7 pt-4 color-7e ">Show:</span>
+    <mat-selection-list
+      (selectionChange)="filter($event)"
+      class="d-flex col-md-6 col-12"
+    >
+      <mat-list-option value="" class="col-md-3 col-12">
+        All
+      </mat-list-option>
+      <mat-list-option value="4" class="col-md-3 col-12">
+        Active
+      </mat-list-option>
+      <mat-list-option value="6" class="col-md-3 col-12">
+        Expired
+      </mat-list-option>
+      <mat-list-option value="9" class="col-md-3 col-12">
+        Due to renewal
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+    [fromRoot]="true"
+    [scrollWindow]="true"
+    *ngFor="let policy of policies"
+    class="py-3"
+  >
+    <div class="col-md-12 bg-ff pt-4 p-3 row m-0">
+      <div class="col-md-6 p-0 side-border">
+        <div class="col-md-4 d-flex p-0">
+          <img src="../../../../../assets/icons/volks.png" alt="" />
+          <div class="p-2">
+            <h6 class="font-sf-sb color-2 font-6">Volkswagen</h6>
+            <p class="font-sf-sb color-7e font-4 mb-0">
+              {{ policy.VehiclePlateNumber }} - KGH
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 row m-0 justify-content-between p-0">
+        <div class="col-md-8 d-flex p-0 ">
+          <img src="../../../../../assets/icons/Arabian-Shield.png" alt="" />
+          <div class="p-2">
+            <h6 class="font-sf-sb color-2 font-6">Arabian shield insurance</h6>
+            <p class="font-sf-sb color-7e font-4 mb-0">Company information</p>
+          </div>
+        </div>
+        <div class="col-md-3 py-3">
+          <button class="btn active-btn">
+            <span class="color-64 font-0 font-sf-m">{{
+              policy.PolicyStatus
+            }}</span>
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-6 side-border">
+        <div class="d-flex">
+          <ul class="col-md-6 p-0">
+            <li>
+              <span class="color-7e font-3 font-sf-m">Name:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Number:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m"
+                >Policy Effective Date:</span
+              >
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Expiry Date:</span>
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                Policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                {{ policy.PolicyNumber }}
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                {{ policy.PolicyExpiryDate }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex">
+          <ul class="col-md-6 p-0">
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Holder ID:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Sequence number:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m"
+                >Vehicle description:</span
+              >
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Insurance Type:</span>
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-6  row m-0 last-row p-0">
+        <div class="col-md-5 ">
+          <button class="btn p-0">
+            <img
+              src="../../../../../assets/icons/noun-document-2482602.svg"
+              alt=""
+            /><span class="px-2 color-64 font-sf-sb font-0"
+              >Download Policy PDF</span
+            >
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn p-0">
+            <img src="../../../../../assets/icons/membership.svg" alt="" /><span
+              class="px-2 color-64 font-sf-sb font-0"
+              >Get Insurance Card</span
+            >
+          </button>
+        </div>
+        <div class="col-md-3 ">
+          <button class="btn p-0">
+            <img src="../../../../../assets/icons/invoice.svg" alt="" /><span
+              class="px-2 color-64 font-sf-sb font-0"
+              >Receipt</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="py-3">
+    <div class="col-md-12 bg-ff pt-4 p-3 row m-0">
+      <div class="col-md-6 p-0 side-border">
+        <div class="col-md-4 d-flex p-0">
+          <img src="../../../../../assets/icons/volks.png" alt="" />
+          <div class="p-2">
+            <h6 class="font-sf-sb color-2 font-6">Volkswagen</h6>
+            <p class="font-sf-sb color-7e font-4 mb-0">2953 - KGH</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 row m-0 justify-content-between p-0">
+        <div class="col-md-8 d-flex p-0 ">
+          <img src="../../../../../assets/icons/Arabian-Shield.png" alt="" />
+          <div class="p-2">
+            <h6 class="font-sf-sb color-2 font-6">Arabian shield insurance</h6>
+            <p class="font-sf-sb color-7e font-4 mb-0">Company information</p>
+          </div>
+        </div>
+        <div class="col-md-3 py-3">
+          <button class="btn expired-btn">
+            <span class="color-38 font-0 font-sf-m">Expired</span>
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-6 side-border">
+        <div class="d-flex">
+          <ul class="col-md-6 p-0">
+            <li>
+              <span class="color-7e font-3 font-sf-m">Name:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Number:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m"
+                >Policy Effective Date:</span
+              >
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Expiry Date:</span>
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex">
+          <ul class="col-md-6 p-0">
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Holder ID:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Sequence number:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m"
+                >Vehicle description:</span
+              >
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Insurance Type:</span>
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-6  row m-0 last-row p-0">
+        <div class="col-md-5 ">
+          <button class="btn p-0">
+            <img
+              src="../../../../../assets/icons/noun-document-2482602.svg"
+              alt=""
+            /><span class="px-2 color-64 font-sf-sb font-0"
+              >Download Policy PDF</span
+            >
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn p-0">
+            <img src="../../../../../assets/icons/membership.svg" alt="" /><span
+              class="px-2 color-64 font-sf-sb font-0"
+              >Get Insurance Card</span
+            >
+          </button>
+        </div>
+        <div class="col-md-3 ">
+          <button class="btn p-0">
+            <img src="../../../../../assets/icons/invoice.svg" alt="" /><span
+              class="px-2 color-64 font-sf-sb font-0"
+              >Receipt</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-3">
+    <div class="col-md-12 bg-ff pt-4 p-3 row m-0">
+      <div class="col-md-6 p-0 side-border">
+        <div class="col-md-4 d-flex p-0">
+          <img src="../../../../../assets/icons/volks.png" alt="" />
+          <div class="p-2">
+            <h6 class="font-sf-sb color-2 font-6">Volkswagen</h6>
+            <p class="font-sf-sb color-7e font-4 mb-0">2953 - KGH</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 row m-0 justify-content-between p-0">
+        <div class="col-md-7 d-flex p-0 ">
+          <img src="../../../../../assets/icons/Arabian-Shield.png" alt="" />
+          <div class="p-2">
+            <h6 class="font-sf-sb color-2 font-6">Arabian shield insurance</h6>
+            <p class="font-sf-sb color-7e font-4 mb-0">Company information</p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <button mat-raised-button class="btn mat-raised-button">
+            <span class="color-f font-sf-m font-0">Renew this policy</span>
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-6 side-border">
+        <div class="d-flex">
+          <ul class="col-md-6 p-0">
+            <li>
+              <span class="color-7e font-3 font-sf-m">Name:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Number:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m"
+                >Policy Effective Date:</span
+              >
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Expiry Date:</span>
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex">
+          <ul class="col-md-6 p-0">
+            <li>
+              <span class="color-7e font-3 font-sf-m">Policy Holder ID:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Sequence number:</span>
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m"
+                >Vehicle description:</span
+              >
+            </li>
+            <li>
+              <span class="color-7e font-3 font-sf-m">Insurance Type:</span>
+            </li>
+          </ul>
+          <ul class="col-md-6">
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+            <li>
+              <span class="color-2 font-3 font-sf-m">
+                policy
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-6  row m-0 last-row p-0">
+        <div class="col-md-5 ">
+          <button class="btn p-0">
+            <img
+              src="../../../../../assets/icons/noun-document-2482602.svg"
+              alt=""
+            /><span class="px-2 color-64 font-sf-sb font-0"
+              >Download Policy PDF</span
+            >
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn p-0">
+            <img src="../../../../../assets/icons/membership.svg" alt="" /><span
+              class="px-2 color-64 font-sf-sb font-0"
+              >Get Insurance Card</span
+            >
+          </button>
+        </div>
+        <div class="col-md-3 ">
+          <button class="btn p-0">
+            <img src="../../../../../assets/icons/invoice.svg" alt="" /><span
+              class="px-2 color-64 font-sf-sb font-0"
+              >Receipt</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

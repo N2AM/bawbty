@@ -1,0 +1,42 @@
+.message {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+.bl-logo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+#partitioned {
+  font-family: SFProText-Medium;
+  padding-left: 8px;
+  letter-spacing: 1.6em;
+  border: 0;
+  background-image: linear-gradient(
+    to left,
+    #464646 70%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: bottom;
+  font-size: 15px;
+  background-size: 32px 1px;
+  background-repeat: repeat-x;
+  background-position-x: 86px;
+  width: 220px;
+  min-width: 220px;
+  outline: none;
+}
+
+#divInner {
+  left: 0;
+  position: sticky;
+}
+
+#divOuter {
+  width: 190px;
+  overflow: hidden;
+  margin: auto;
+}

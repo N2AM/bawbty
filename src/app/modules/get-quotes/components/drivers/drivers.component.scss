@@ -1,0 +1,11 @@
+.divider {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+.col-md-6.pt-2,
+.col-md-4.d-flex.justify-content-between.bg-f3 {
+  @media screen and (max-width: 767px) {
+    padding: 0 !important;
+  }
+}

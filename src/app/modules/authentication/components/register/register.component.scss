@@ -1,0 +1,149 @@
+.row {
+  margin: 0;
+}
+h2 {
+  font-size: 2.5em;
+}
+.col-md-12 {
+  span {
+    padding: 5px;
+    color: #000;
+    font-family: SFProDisplay-Regular;
+    font-size: 18px;
+  }
+}
+#home-link {
+  position: relative;
+  z-index: 9999999999999999999999;
+}
+.col-md-4 {
+  height: 100vh;
+  min-height: 700px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    // z-index: -1;
+  }
+  .p-5 {
+    color: #fff;
+  }
+  .link {
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    border: solid 2px #ffffff;
+    border-radius: 5px;
+    position: relative;
+    z-index: 9;
+    color: #fff;
+    a {
+      font-family: Montserrat-Bold;
+      color: #fff !important;
+    }
+  }
+}
+#logo {
+  width: 128px;
+  height: 72px;
+  object-fit: contain;
+}
+.col-md-12 mat-form-field {
+  width: 89.4%;
+}
+mat-form-field {
+  width: 85%;
+  img {
+    width: 24px;
+    height: 12px;
+    object-fit: contain;
+  }
+}
+.btn {
+  background: #018064;
+  color: #fff;
+  font-family: Montserrat-regular;
+  font-weight: 600;
+  margin: auto;
+  padding: 12px 70px;
+}
+.bubbles {
+  position: absolute;
+  bottom: 0px;
+  // left: 30px;
+  width: 100%;
+  height: 25%;
+  z-index: 1;
+  transform: translateZ(0);
+  li {
+    position: absolute;
+    display: block;
+    animation: square 3s ease-in-out infinite alternate both;
+  }
+  li:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    transform: rotate(-30deg);
+    left: 30px;
+    bottom: 0px;
+    border: 4px solid #018064;
+  }
+  li:nth-child(2) {
+    width: 20px;
+    height: 20px;
+    transform: rotate(-20deg);
+    left: 75px;
+    bottom: 50px;
+    // animation-duration: 7s;
+    border: 3px solid #018064;
+  }
+  li:nth-child(3) {
+    width: 10px;
+    height: 10px;
+    transform: rotate(20deg);
+    left: 55px;
+    bottom: 78px;
+    border: 1.5px solid #018064;
+    // animation-duration: 3s;
+  }
+}
+@keyframes square {
+  0% {
+    opacity: 0;
+    // transform: rotate(-30deg);
+  }
+  // 50% {
+  // transform: translateY(0);
+  // }
+  // 100% {
+  // transform: rotate(-630deg);
+  // }
+}
+mat-label {
+  color: #000;
+  font-family: SFProDisplay-Regular;
+  font-size: 18px;
+}
+
+strong {
+  font-size: 20px;
+}
+.side {
+  position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  &:hover,
+  &:focus {
+    -moz-appearance: textfield;
+  }
+  -moz-appearance: textfield; /* Firefox */
+}

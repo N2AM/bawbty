@@ -1,0 +1,81 @@
+.container {
+  max-width: 1200px;
+}
+h2 {
+  font-size: 5em;
+}
+.btn {
+  font-size: 1.4em !important;
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin: 10px;
+  }
+}
+table {
+  @media screen and (min-width: 992px) {
+    width: 100%;
+  }
+}
+table,
+tr,
+td {
+  table-layout: fixed;
+  border: 1px solid #c2c2c280;
+  text-align: center;
+  border-radius: 1px;
+  box-shadow: 0 2px 2px 0 #0000000f;
+}
+mat-list-option {
+  width: 50% !important;
+  margin: auto;
+}
+td {
+  margin: auto !important;
+
+  img {
+    width: 93px;
+    height: 93px;
+    object-fit: contain;
+  }
+  .btn {
+    padding: 0;
+    &.close-btn {
+      position: relative;
+      display: block;
+      left: 90%;
+      img {
+        width: 17px;
+        height: 17px;
+        margin: 0;
+        object-fit: contain;
+      }
+    }
+  }
+  .insurance-logo {
+    width: 128px;
+    height: 98px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+  .buy {
+    width: 7.5em;
+    height: 3em;
+    border-radius: 10px;
+  }
+  .color-23 {
+    opacity: 0.7;
+  }
+}
+
+.border-top {
+  border-top: solid 1px #21212121;
+}
+.separator {
+  position: relative;
+  top: 15px;
+  border-left: solid 1px #21212121;
+  height: 35px;
+}

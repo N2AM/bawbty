@@ -1,0 +1,125 @@
+<div class="bg-ff px-3 mt-4 p-2">
+  <div class="py-2">
+    <button
+      class="btn d-flex pb-2 "
+      type="button"
+      data-toggle="collapse"
+      data-target="#InsuranceType"
+      aria-expanded="false"
+      aria-controls="InsuranceType"
+    >
+      <span class="font-1 color-2 font-sf-m">Insurance type</span>
+      <i class="material-icons color-7e"> </i>
+    </button>
+    <div id="InsuranceType" class="collapse show border-33 pb-3 ">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li *ngFor="let type of insuranceTypes; let i = index" class="nav-item">
+          <a
+            [ngClass]="{ active: type.id == 0, 'border-s': type.id == 1 }"
+            class="nav-link  font-sf-m font-3 color-2"
+            data-toggle="pill"
+            role="tab"
+            href=""
+            aria-controls="pills-home"
+            aria-selected="true"
+            (click)="getInsuranceType(type.id)"
+            >{{ type.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="py-2">
+    <button
+      class="btn d-flex pb-2 "
+      type="button"
+      data-toggle="collapse"
+      data-target="#MaintenanceCenter"
+      aria-expanded="false"
+      aria-controls="MaintenanceCenter"
+    >
+      <span class="font-1 color-2 font-sf-m">Maintenance center</span>
+      <i class="material-icons color-7e"> </i>
+    </button>
+    <div id="MaintenanceCenter" class="collapse show pb-3  border-33">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li
+          *ngFor="let center of maintenanceCenters; let i = index"
+          class="nav-item"
+        >
+          <a
+            [ngClass]="{ active: center.id == 0 }"
+            class="nav-link font-sf-m font-3 color-2"
+            data-toggle="pill"
+            href=""
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+            (click)="getMaintenanceCenter(center.id)"
+            >{{ center.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="py-2" *ngIf="deductibles && deductibles.length > 0">
+    <button
+      class="btn d-flex pb-2 "
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapseDeductible"
+      aria-expanded="false"
+      aria-controls="collapseDeductible"
+    >
+      <span class="font-1 color-2 font-sf-m">Deductible</span>
+      <i class="material-icons color-7e"> </i>
+    </button>
+    <mat-selection-list
+      class="collapse pb-2 pt-0 border-33 show"
+      id="collapseDeductible"
+      #deductibleList
+      (selectionChange)="
+        onDeductibleSelection($event, deductibleList.selectedOptions.selected)
+      "
+    >
+      <mat-list-option *ngFor="let item of deductibles" [value]="item">
+        {{ item }} SAR
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="py-2">
+    <button
+      class="btn d-flex pb-2 "
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapseAgencies"
+      aria-expanded="false"
+      aria-controls="collapseAgencies"
+    >
+      <span class="font-1 color-2 font-sf-m">Agencies</span>
+      <i class="material-icons color-7e"> </i>
+    </button>
+    <mat-selection-list
+      #agenciesSelectionList
+      (selectionChange)="
+        onAgencySelection(
+          $event,
+          agenciesSelectionList.selectedOptions.selected
+        )
+      "
+      class="collapse pb-2 show pt-0"
+      id="collapseAgencies"
+    >
+      <mat-list-option
+        class="my-3"
+        *ngFor="let item of agenciesList"
+        [value]="item.id"
+      >
+        <div class="d-flex align-items-center">
+          <img src="{{ item.Logo }}" alt="Insurance agency logo" />
+          <span class="font-1 color-2 font-sf-m">{{ item.name }}</span>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

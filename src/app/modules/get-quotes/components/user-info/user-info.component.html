@@ -1,0 +1,273 @@
+<form
+  [formGroup]="userInfoForm"
+  (ngSubmit)="getUerInfo()"
+  class="col-md-10 m-auto"
+  *ngIf="userInfoLookUps"
+>
+  <div class="bg-f7 row pb-4 p-4">
+    <!-- <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field id="dob" (click)="dob.open()">
+        <mat-datepicker-toggle
+          id="mat-datepicker-toggle-ui"
+          matSuffix
+          [for]="dob"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          id="mat-datepicker-ui"
+          [disabled]="isBOD"
+          #dob
+        ></mat-datepicker>
+        <input
+          matInput
+          formControlName="dob"
+          [matDatepicker]="dob"
+          [max]="maxDate"
+          placeholder="Date of birth"
+          id="dob"
+      /></mat-form-field>
+    </div> -->
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Education qualification</mat-label>
+        <mat-select
+          formControlName="Education_qualification"
+          id="educationQualification"
+        >
+          <mat-option
+            *ngFor="
+              let userInfoLookUp of userInfoLookUps.Education_qualification
+            "
+            id="{{ userInfoLookUp.Name }}"
+            value="{{ userInfoLookUp.Id }}"
+            >{{ userInfoLookUp.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.Education_qualification.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>Children Below 16 Years</mat-label>
+        <mat-select formControlName="children_below_16" id="children_below_16">
+          <mat-option id="0" value="0">0</mat-option>
+          <mat-option id="1" value="1">1</mat-option>
+          <mat-option id="2" value="2">2</mat-option>
+          <mat-option id="3" value="3">3</mat-option>
+          <mat-option id="4" value="4">4</mat-option
+          ><mat-option id="5" value="5">5</mat-option
+          ><mat-option id="more" value="6">More</mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.children_below_16.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <!-- <div class="col-lg-6 col-md-12 col-12 mt-3">
+      <mat-form-field>
+        <mat-label>License type</mat-label>
+        <mat-select formControlName="license_type" id="licenseType">
+          <mat-option
+            *ngFor="let userInfoLookUp of userInfoLookUps.License_types"
+            id="{{ userInfoLookUp.Name }}"
+            value="{{ userInfoLookUp.Id }}"
+            >{{ userInfoLookUp.Name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="f.license_type.errors?.required">
+          Field is required</mat-error
+        >
+      </mat-form-field>
+    </div> -->
+  </div>
+
+  <div class=" row mt-4 bg-f6  px-4 py-3">
+    <p class="font-sf-sb m-0 bg-f6 col-md-12">Violations</p>
+  </div>
+  <div class="row bg-f7 d-flex px-4">
+    <label id="Violations" class="col-md-8 color-2 font-sfd-r font-6 "
+      >Does policyholder have traffic violations?</label
+    >
+
+    <mat-radio-group
+      (change)="violation($event)"
+      class="col-md-4"
+      [disabled]="userInfoLookUps.Traffic_violations.length < 1"
+      aria-label=""
+    >
+      <div class="row">
+        <mat-radio-button
+          id="vio-uf-no"
+          checked
+          class="col-md-6 p-3 col-12"
+          value="2"
+          >No</mat-radio-button
+        >
+        <mat-radio-button id="vio-uf-yes" class="col-md-6 p-3 col-12" value="1"
+          >Yes</mat-radio-button
+        >
+      </div>
+    </mat-radio-group>
+    <div class="col-md-12" *ngIf="PolicyViolationsCheck">
+      <div class="checking mb-3">
+        <mat-selection-list
+          formControlName="Traffic_violations"
+          class="row m-2"
+        >
+          <mat-list-option
+            class="col-md-4 col-6"
+            *ngFor="
+              let userInfoLookUp of userInfoLookUps.Traffic_violations;
+              let i = index
+            "
+            [value]="userInfoLookUp.Id"
+            >{{ userInfoLookUp.Name }}</mat-list-option
+          >
+        </mat-selection-list>
+        <mat-error
+          *ngIf="
+            submitted &&
+            userInfoForm.controls['Traffic_violations'].hasError('required')
+          "
+          >Field is required</mat-error
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class=" row mt-4 bg-f6 px-4 py-3 ">
+    <p class="font-sf-sb m-0 bg-f6 col-md-12">Medical conditions</p>
+  </div>
+  <div class="row bg-f7 d-flex px-4">
+    <label id="MedicalConditions" class="col-md-8 color-2 font-sfd-r font-6 "
+      >Does policyholder have medical Conditions or Restrictions?</label
+    >
+
+    <mat-radio-group
+      [disabled]="userInfoLookUps.Medical_conditions.length < 1"
+      (change)="PolicyMedical($event)"
+      class="col-md-4 row justify-content-between"
+      aria-label=""
+      ><mat-radio-button
+        id="med-uf-no"
+        class="col-md-6   p-3 col-12"
+        value="2"
+        checked
+        >No</mat-radio-button
+      >
+      <mat-radio-button id="med-uf-yes" class="col-md-6  p-3 col-12" value="1"
+        >Yes</mat-radio-button
+      >
+    </mat-radio-group>
+    <div class="col-md-12" *ngIf="PolicyMedicalCheck">
+      <div class="checking mb-3">
+        <mat-selection-list
+          formControlName="Medical_conditions"
+          class="row m-0"
+        >
+          <mat-list-option
+            class="col-md-4 col-6"
+            *ngFor="
+              let userInfoLookUp of userInfoLookUps.Medical_conditions;
+              let i = index
+            "
+            [value]="userInfoLookUp.Id"
+            >{{ userInfoLookUp.Name }}</mat-list-option
+          >
+        </mat-selection-list>
+        <mat-error
+          *ngIf="
+            submitted &&
+            userInfoForm.controls['Medical_conditions'].hasError('required')
+          "
+          >Field is required</mat-error
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Driver-->
+  <div id="drivers" class=" row mt-4 bg-f6 px-4 py-3">
+    <p class="font-sf-sb m-0 bg-f6 col-md-12">Drivers</p>
+  </div>
+  <div
+    *ngIf="formErrShow"
+    class="row justify-content-between d-flex px-4 alert alert-danger"
+  >
+    {{ formErr }}
+  </div>
+  <div *ngIf="noDrivers" class="row justify-content-between bg-f7 d-flex px-4">
+    <label id="Drivers" class="col-md-8 col-12 color-2 font-sfd-r font-6"
+      >No drivers added</label
+    >
+    <div class="col-lg-4 col-md-5 col-4  p-3 col-12 ">
+      <img
+        class="add-driver"
+        src="../../../../../assets/icons/add-ic.png"
+        alt="add-driver"
+      />
+      <button
+        id="add-driver-btn"
+        class="btn font-5 color-64 font-sfd-m "
+        (click)="addDriver($event)"
+      >
+        Add a driver
+      </button>
+    </div>
+  </div>
+  <div *ngIf="addDriverCheck" class="row px-0 bg-f7">
+    <app-driver-form
+      (cancelForm)="hideForm($event)"
+      [operation]="Add"
+      class="col-md-12 col-12"
+      [editDriver]="onEditDriver"
+      (doneForm)="doneForm($event)"
+      (formError)="getErrorMesg($event)"
+    ></app-driver-form>
+  </div>
+  <app-drivers
+    (deleted)="deleted($event)"
+    class=" row bg-ff px-2 p-3"
+    *ngIf="driversView"
+    [drivers]="drivers"
+    (editForm)="getEditedDriver($event)"
+  ></app-drivers>
+
+  <div *ngIf="addDriversCheck" class="row px-5 pb-4 bg-f7 ">
+    <button
+      type="button"
+      class="btn font-mb p-0 color-20 font-5"
+      (click)="addDrivers($event)"
+    >
+      <img
+        class="add-driver"
+        src="../../../../../assets/icons/add-ic.png"
+        alt="add-driver"
+      />
+      Add another driver
+    </button>
+  </div>
+  <!--End of Driver-->
+  <div class=" row pb-4 w-100 justify-content-center pb-4 w-100" id="i">
+    <button
+      mat-raised-button
+      tabindex="-1"
+      type="button"
+      class="previous m-5"
+      (click)="moveToSelectedTab(0, 1, 'Previous')"
+    >
+      Previous
+    </button>
+    <button
+      id="continue-userInfo"
+      mat-raised-button
+      class="m-5"
+      tabindex="-1"
+      type="submit"
+      (click)="moveToSelectedTab(2, 1)"
+    >
+      Continue
+    </button>
+  </div>
+</form>

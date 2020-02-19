@@ -1,0 +1,417 @@
+<div class="col-md-12 m-auto ">
+  <div class="row bg-f7 px-3 pt-4 m-0 ">
+    <div class="col-lg-6 col-md-12 col-12 ">
+      <label
+        id="radio-group-label"
+        class="col-lg-12 col-md-12 col-12 font-sf-m color-7e m-0 pt-0"
+        >Registeration type</label
+      >
+      <mat-radio-group
+        (change)="mainRadioChange($event)"
+        class="col-lg-12 col-md-12 col-12"
+        aria-label="Registeration type"
+        [(ngModel)]="regType"
+      >
+        <div class="row">
+          <mat-radio-button
+            class="col-md-6"
+            checked
+            value="0"
+            name="sequence"
+            id="sequence"
+            >Sequence number</mat-radio-button
+          >
+          <mat-radio-button class="col-md-6" value="1" name="custom" id="custom"
+            >Custom card</mat-radio-button
+          >
+        </div>
+      </mat-radio-group>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 " *ngIf="regType == '0'">
+      <label
+        id="radio-group-label"
+        class="col-lg-12 col-md-12 col-12 font-sf-m color-7e m-0 pt-0"
+        >Purpose of insurance</label
+      >
+
+      <mat-radio-group
+        (change)="radioChange($event)"
+        class="col-lg-12 col-md-12 col-12"
+        aria-label=""
+      >
+        <div class="row">
+          <mat-radio-button
+            class="col-md-6"
+            value="0"
+            [checked]="POI == 0"
+            id="new-insurance"
+            name="new-insurance"
+            >New insurance</mat-radio-button
+          >
+          <mat-radio-button
+            class="col-md-6"
+            value="1"
+            [checked]="POI == 1"
+            id="transfer-ownership"
+            name="transfer-ownership"
+            >Transfer ownership</mat-radio-button
+          >
+        </div>
+      </mat-radio-group>
+    </div>
+  </div>
+  <form [formGroup]="insuranceForm" (ngSubmit)="onBasicSubmit()">
+    <div class="bg-f7 mb-5 px-4 pb-4 ">
+      <div class="row ">
+        <div
+          *ngIf="backvalidation && formError !== ''"
+          class="col-md-11 m-auto alert alert-danger"
+        >
+          {{ formError }}
+        </div>
+        <div class="col-lg-6 col-md-12 col-12 mt-3">
+          <mat-form-field class="px-4">
+            <input
+              id="insured"
+              matInput
+              formControlName="insuredNationalId"
+              placeholder="Insured national
+        ID/Iqama number"
+              type="number"
+              onKeyPress="if(this.value.length==10)return false;"
+              (focusout)="dobSelect()"
+            />
+
+            <!-- <mat-error *ngIf="f.insuredNationalId.errors" class="invalid-feedback"> -->
+            <mat-error *ngIf="f.insuredNationalId.errors?.required">
+              Insured national ID/Iqama number is required
+            </mat-error>
+            <mat-error *ngIf="f.insuredNationalId.errors?.pattern">
+              Enter a valid Insured national ID/Iqama number
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.insuredNationalId.errors?.pattern &&
+                f.insuredNationalId.errors?.min
+              "
+            >
+              Insured national ID/Iqama number must not be less than 10 numbers
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.insuredNationalId.errors?.pattern &&
+                f.insuredNationalId.errors?.max
+              "
+            >
+              Insured national ID/Iqama number must not exceed 10 numbers
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.insuredNationalId.errors?.pattern &&
+                f.insuredNationalId.errors?.inserted
+              "
+            >
+              Insured national ID/Iqama number already used as driver ID
+            </mat-error>
+            <mat-error *ngIf="f.insuredNationalId.errors?.different">
+              Insured national ID must not be Equal to Vehicle owner national ID
+            </mat-error>
+            <!-- </mat-error> -->
+          </mat-form-field>
+        </div>
+        <!-- <div
+          class="col-lg-6 col-md-12 col-12 mt-3"
+          *ngIf="sequenceType === '1' && regType === '0'"
+        >
+          <mat-form-field class="px-4">
+            <input
+              id="ownerNationalId"
+              maxlength="10"
+              formControlName="ownerNationalId"
+              placeholder=""
+              type="number"
+              matInput
+              onKeyPress="if(this.value.length==10)return false;"
+              placeholder="Vehicle owner national ID / Iqama number"
+            />
+
+            <mat-error *ngIf="f.ownerNationalId.errors?.required">
+              Vehicle owner national ID / Iqama number is required
+            </mat-error>
+            <mat-error *ngIf="f.ownerNationalId.errors?.pattern">
+              Enter a valid Vehicle owner national ID / Iqama number
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.ownerNationalId.errors?.pattern &&
+                f.ownerNationalId.errors?.min
+              "
+            >
+              Vehicle owner national ID must not be less than 10
+              numbers
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.ownerNationalId.errors?.pattern &&
+                f.ownerNationalId.errors?.max
+              "
+            >
+              Vehicle owner national ID must not exceed 10
+              numbers
+            </mat-error>
+            <mat-error *ngIf="f.ownerNationalId.errors?.different">
+              Vehicle owner national ID must not be Equal to Insured national ID
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+        <div class="row m-0 col-lg-6 col-md-12 col-12 mt-3 d-flex">
+          <mat-form-field class="px-4 col-md-8 col-12">
+            <mat-label>Month of birth</mat-label>
+            <!-- <mat-select formControlName="birthMonth" id="birthMonth"
+              ><mat-option
+                *ngFor="let month of months"
+                [value]="month.key"
+                [id]="month.value"
+                >{{ month.value }} ({{ month.key }})</mat-option
+              ></mat-select
+            > -->
+            <input
+              type="number"
+              placeholder=""
+              matInput
+              max="12"
+              min="1"
+              formControlName="birthMonth"
+              [matAutocomplete]="autoMonth"
+            />
+            <mat-autocomplete #autoMonth="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredMonth | async"
+                [value]="option.key"
+              >
+                {{ option.value }} ({{ option.key }})
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="f.birthMonth.errors?.required"
+              >required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                (!f.birthMonth.errors?.required && !f.birthMonth.errors?.min) ||
+                (!f.birthMonth.errors?.required && !f.birthMonth.errors?.max)
+              "
+              >enter a valid month</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field class="px-4 col-md-4 col-12">
+            <mat-label>Year</mat-label>
+            <input
+              type="number"
+              placeholder=""
+              matInput
+              [max]="years[years.length - 1]"
+              [min]="years[0]"
+              formControlName="birthYear"
+              [matAutocomplete]="auto"
+              onKeyPress="if(this.value.length==4) return false;"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="f.birthYear.errors?.required">required</mat-error>
+            <mat-error
+              *ngIf="
+                (!f.birthYear.errors?.required && !f.birthYear.errors?.min) ||
+                (!f.birthYear.errors?.required && !f.birthYear.errors?.max)
+              "
+              >enter a valid year</mat-error
+            >
+            <mat-error *ngIf="!f.birthYear.valid">invalid</mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-lg-6 col-md-12 col-12 mt-3" *ngIf="Gregorian">
+          <mat-form-field class="px-4" (click)="birthDateGregorian.open()">
+            <mat-label>Birthday date</mat-label>
+            <mat-datepicker-toggle
+              matSuffix
+              id="mat-datepicker-toggle-bi"
+              [for]="birthDateGregorian"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              disabled="false"
+              id="mat-datepicker-bi"
+              #birthDateGregorian
+            ></mat-datepicker>
+            <input
+              matInput
+              id="policy-birthDateGregorian-date"
+              [matDatepicker]="birthDateGregorian"
+              placeholder=""
+              [min]="minGDate"
+              [max]="maxGDate"
+              type="text"
+              formControlName="birthDateGregorian"
+              disabled="disabled"
+            />
+            <mat-error *ngIf="f.birthDateGregorian.errors?.required">
+              Gregorian Birthday date is required
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+        <div class="col-lg-6 col-md-12 col-12 mt-3" *ngIf="regType == '0'">
+          <mat-form-field class="px-4">
+            <input
+              id="SequenceNumber"
+              maxlength="9"
+              formControlName="sequenceNumber"
+              type="number"
+              matInput
+              onKeyPress="if(this.value.length==9)return false;"
+              placeholder="Sequence number"
+            />
+
+            <mat-error *ngIf="f.sequenceNumber.errors?.required">
+              Sequence number is required
+            </mat-error>
+            <mat-error *ngIf="f.sequenceNumber.errors?.pattern">
+              Enter valid Sequence number
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.sequenceNumber.errors?.pattern &&
+                f.sequenceNumber.errors?.min
+              "
+            >
+              Sequence number must not be less than 9 numbers
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.sequenceNumber.errors?.pattern &&
+                f.sequenceNumber.errors?.max
+              "
+            >
+              Sequence number must not exceed 9 numbers
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12 mt-3" *ngIf="regType == '1'">
+          <mat-form-field class="px-4">
+            <input
+              id="CustomNumber"
+              maxlength="10"
+              formControlName="customNumber"
+              type="number"
+              matInput
+              onKeyPress="if(this.value.length==10)return false;"
+              placeholder="Custom number"
+            />
+
+            <mat-error *ngIf="f.customNumber.errors?.required">
+              Custom number is required
+            </mat-error>
+            <mat-error *ngIf="f.customNumber.errors?.pattern">
+              Enter a valid Custom number
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.customNumber.errors?.pattern && f.customNumber.errors?.min
+              "
+            >
+              Custom number must not be less than 10 numbers
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !f.customNumber.errors?.pattern && f.customNumber.errors?.max
+              "
+            >
+              Custom number must not exceed 10 numbers
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div
+          *ngIf="regType == '1' || sequenceType == '1'"
+          class="col-lg-6 col-md-12 col-12 mt-3 d-flex"
+        >
+          <mat-form-field class="px-4">
+            <mat-label>Manufacture Year</mat-label>
+            <mat-select formControlName="manifucture_year" id="ManufactureYear"
+              ><mat-option
+                *ngFor="let year of manfactureYears"
+                [value]="year"
+                [id]="year"
+                >{{ year }}</mat-option
+              ></mat-select
+            >
+            <mat-error *ngIf="f.manifucture_year.errors?.required"
+              >required</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12 mt-2">
+          <mat-form-field
+            class="px-4 py-2"
+            (click)="policy_effective_date.open()"
+          >
+            <mat-label
+              >Policy effective date<mat-icon
+                >error_outline</mat-icon
+              ></mat-label
+            >
+            <mat-datepicker-toggle
+              matSuffix
+              id="mat-datepicker-toggle-bi"
+              [for]="policy_effective_date"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              disabled="false"
+              id="mat-datepicker-bi"
+              #policy_effective_date
+            ></mat-datepicker>
+            <input
+              matInput
+              type="text"
+              id="policy-effective-date"
+              [matDatepicker]="policy_effective_date"
+              placeholder=""
+              [min]="minDate"
+              [max]="maxDate"
+              formControlName="policy_effective_date"
+            />
+            <mat-error *ngIf="f.policy_effective_date.errors?.required">
+              Policy effective date is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-11 d-flex p-3  mx-4">
+          <mat-checkbox id="policy-check" (change)="checking($event)">
+            <span class="font-msb color-77 font-4 font-sfd-r">
+              I agree to grant Fal Insurance & Reinsurance Brokers the right to
+              inquire from Najm Insurance Services and / or National Information
+              Center and / or other <br />
+              relevant official systems on my data and data Of vehicles or any
+              other relevant data.</span
+            ></mat-checkbox
+          >
+        </div>
+      </div>
+    </div>
+    <div class="text-center m-auto pb-5">
+      <button
+        id="continue-basicInfo"
+        mat-raised-button
+        tabindex="-1"
+        type="submit"
+        (click)="moveToSelectedTab(1, 0)"
+        [disabled]="!continue"
+      >
+        Continue
+      </button>
+    </div>
+  </form>
+</div>

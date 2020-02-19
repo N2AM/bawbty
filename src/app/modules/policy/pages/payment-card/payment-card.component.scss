@@ -1,0 +1,37 @@
+img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+h1 {
+  font-size: 30px !important;
+}
+p {
+  font-size: 18px !important;
+}
+.policy {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.col:not(.last-s),
+.benefits {
+  @media screen and (min-width: 768px) {
+    &:lang(en) {
+      border-right: 1px solid #c2c2c24a;
+    }
+    &:lang(ar) {
+      border-left: 1px solid #c2c2c24a;
+    }
+  }
+}
+ul {
+  li {
+    display: block;
+    line-height: 2.2;
+  }
+}
+.done {
+  background: #fafafa;
+  color: #222222;
+  border: solid 1px rgb(34, 34, 34);
+}

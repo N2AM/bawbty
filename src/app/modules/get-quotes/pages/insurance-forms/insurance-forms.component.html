@@ -1,0 +1,71 @@
+<div class="col-md-11 m-auto pb-3">
+  <div class="pt-5 pb-4 text-center">
+    <h1>Fill the form and get quotes</h1>
+  </div>
+  <mat-tab-group #allTabs mat-align-tabs="start" animationDuration="1000ms">
+    <mat-tab label="Basic info">
+      <ng-template mat-tab-label>
+        <div class="d-flex">
+          <div class="d-block">
+            <img
+              class="mx-2  d-block"
+              src="../../../../../assets/icons/current-tab.svg"
+              alt=""
+              style="
+    margin-top: 6px;
+"
+            />
+            <img
+              src="../../../../../assets/icons/separator.svg"
+              class="mt-2"
+              alt=""
+            />
+          </div>
+          <p class="font-cg font-1 color-2 m-0">Basic info</p>
+        </div>
+      </ng-template>
+      <app-basic-info (switchTabs)="moveToSelectedTab($event)"></app-basic-info>
+    </mat-tab>
+
+    <mat-tab label="User info">
+      <ng-template mat-tab-label>
+        <div class="d-flex">
+          <div class="d-block">
+            <img
+              class="mx-2  d-block"
+              src="../../../../../assets/icons/inactive-tab.svg"
+              alt=""
+              style="
+    margin-top: 6px;
+"
+            />
+            <img
+              src="../../../../../assets/icons/separator.svg"
+              class="mt-2"
+              alt=""
+            />
+          </div>
+          <p class="font-cg font-1 color-2 m-0">User info</p>
+        </div>
+      </ng-template>
+      <app-user-info (switchTabs)="moveToSelectedTab($event)"></app-user-info>
+    </mat-tab>
+    <mat-tab label="Vehicle info">
+      <ng-template mat-tab-label>
+        <div class="d-flex" style="margin-top: -38px;">
+          <img
+            class="mx-2  d-block"
+            src="../../../../../assets/icons/inactive-tab.svg"
+            alt=""
+            style="
+    margin-top: 6px;
+"
+          />
+          <p class="font-cg font-1 color-2 m-0">Vehicle info</p>
+        </div> </ng-template
+      ><app-vehicle-info
+        (switchTabs)="moveToSelectedTab($event)"
+      ></app-vehicle-info>
+    </mat-tab>
+  </mat-tab-group>
+</div>

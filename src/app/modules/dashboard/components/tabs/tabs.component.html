@@ -1,0 +1,141 @@
+<mat-tab-group class="pt-4" (selectedTabChange)="changeTabs($event)">
+  <mat-tab label="Dashboard">
+    <app-dashboard-view [policiesCounts]="policiesCounts"></app-dashboard-view>
+  </mat-tab>
+  <mat-tab label="Policies">
+    <app-policies
+      [policies]="policies"
+      [totalItems]="totalItems"
+    ></app-policies>
+  </mat-tab>
+  <mat-tab label="Policy holders">
+    <app-policy-holders
+      [policyHolders]="policyHolders"
+      (emitDeletedHolder)="getDeletedHolder($event)"
+    ></app-policy-holders
+  ></mat-tab>
+  <mat-tab label="Vehicles">
+    <app-vehicles
+      [vehicles]="vehicles"
+      (emitDeletedVehicle)="getDeletedVehicle($event)"
+    ></app-vehicles>
+  </mat-tab>
+</mat-tab-group>
+<div
+  *ngIf="policyHolder"
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content pb-3">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalCenterLongTitle">
+          Modal title
+        </h5> -->
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <span class="color-2 font-sf-sb font-11"
+          >Are you sure you want to delete this Policy holder?</span
+        >
+        <div class="mt-4 mx-auto px-3 w-75 d-flex">
+          <ul>
+            <li class="font-sf-r color-7e font-5">Policy Holder ID:</li>
+            <li class="font-sf-r color-7e font-5">Full Name:</li>
+          </ul>
+          <ul>
+            <li class="font-sf-r color-2 font-5">
+              {{ policyHolder.PolicyHolderId }}
+            </li>
+            <li class="font-sf-r color-2 font-5">
+              {{ policyHolder.FullName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn color-64" data-dismiss="modal">
+          <span class="color-ff font-sf-sb font-1">Cancel</span>
+        </button>
+        <button
+          data-dismiss="modal"
+          (click)="deletePolicyHolder(policyHolder)"
+          type="button"
+          mat-raised-button
+          class="btn mat-raised-button"
+        >
+          <span class="color-ff font-sf-sb font-0">Delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  *ngIf="vehicle"
+  class="modal fade"
+  id="vehicleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content pb-3">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalCenterLongTitle">
+          Modal title
+        </h5> -->
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <span class="color-2 font-sf-sb font-11"
+          >Are you sure you want to delete this vehicle?</span
+        >
+        <div class="mt-4 mx-auto px-3 w-75 d-flex">
+          <ul>
+            <li class="font-sf-r color-7e font-5">Vehicle Description:</li>
+            <li class="font-sf-r color-7e font-5">Sequence Number:</li>
+          </ul>
+          <ul>
+            <li class="font-sf-r color-2 font-5">
+              {{ vehicle.VehicleMake }} - {{ vehicle.VehicleModel }}
+            </li>
+            <li class="font-sf-r color-2 font-5">{{ vehicle.VehicleId }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn color-64" data-dismiss="modal">
+          <span class="color-ff font-sf-sb font-1">Cancel</span>
+        </button>
+        <button
+          data-dismiss="modal"
+          (click)="deleteVehicle(vehicle)"
+          type="button"
+          mat-raised-button
+          class="btn mat-raised-button"
+        >
+          <span class="color-ff font-sf-sb font-0">Delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,395 @@
+<div *ngIf="policy" class="container py-5 ">
+  <div class="row mt-2">
+    <div class="col-md-8 col-12">
+      <h6 class="color-2 font-10 font-sf-sb">Policy Details</h6>
+      <div class="p-3 d-flex mt-2">
+        <img
+          src="../../../../../assets/icons/quotes-ic-55.svg"
+          alt="count-down-timer"
+        />
+        <span class="color-2 font-6 font-sf-m">This quote will expire in:</span>
+        <countdown
+          class="font-6"
+          #cd
+          [config]="{ leftTime: 36000 }"
+        ></countdown>
+      </div>
+      <div class="bg-ff row m-0 py-4 policy">
+        <div class="col-md-8 d-flex">
+          <img
+            [src]="policy.PolicyDetails.CompanyLogo"
+            alt="company logo"
+            class="h-icon"
+          />
+          <div class="d-block">
+            <h3 class="color-a20 font-sf-m font-10">
+              {{ policy.PolicyDetails.CompanyName }}
+            </h3>
+            <h6
+              class="font-2 text-center w-25 color-64 p-1 font-sf-m border-05 bg-ec"
+            >
+              {{ policy.PolicyDetails.InsuranceType }}
+            </h6>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="mb-2">
+            <span class="font-2 color-7e font-sf-m">Total Price</span>
+          </div>
+          <div>
+            <span class="color-8ff font-10 font-sf-sb">
+              {{ policy.PolicyDetails.TotalPrice }}</span
+            >
+            <span class="color-2 font-5 font-sf-m mx-1">SAR</span>
+          </div>
+        </div>
+        <hr class="col-md-11" />
+        <div class="col pt-2">
+          <h5 class="color-7e font-6 font-sf-m">Quote Reference</h5>
+          <h4 class="color-2 font-8 font-sf-m">
+            {{ policy.PolicyDetails.QuoteReference }}
+          </h4>
+        </div>
+        <div class="col pt-2">
+          <h5 class="color-7e font-6 font-sf-m">Policy Issue Date</h5>
+          <h4 class="color-2 font-8 font-sf-m">
+            {{ policy.PolicyDetails.IssueDate }}
+          </h4>
+        </div>
+        <div class="col pt-2">
+          <h5 class="color-7e font-6 font-sf-m">Policy Effective Date</h5>
+          <h4 class="color-2 font-8 font-sf-m">
+            {{ policy.PolicyDetails.EffictiveDate }}
+          </h4>
+        </div>
+        <div class="col pt-2 last-s">
+          <h5 class="color-7e font-6 font-sf-m">Policy Expiry Date</h5>
+          <h4 class="color-2 font-8 font-sf-m">
+            {{ policy.PolicyDetails.PolicyExpiryDate }}
+          </h4>
+        </div>
+        <hr class="col-md-11" />
+        <div class="col-md-6 benefits">
+          <div class="py-2">
+            <h5 class="color-7e font-4 font-sf-m">Included benefits</h5>
+            <ul
+              *ngIf="policy.PolicyDetails.PolicyBenefits != undefined"
+              class="p-0"
+            >
+              <li
+                class="color-2 font-6 font-sf-m d-block"
+                *ngFor="let benefit of policy.PolicyDetails.PolicyBenefits"
+              >
+                <div *ngIf="benefit.Type == 2 || benefit.Type == 3">
+                  {{ benefit.description }}
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            *ngIf="policy.PolicyDetails.PolicyBenefits.length > 0"
+            class="py-2"
+          >
+            <h5 class="color-7e font-6 font-sf-m">Additional benefits</h5>
+            <ul class="p-0">
+              <li
+                class="d-block color-2 font-6 font-sf-m"
+                *ngFor="let addBenefit of policy.PolicyDetails.PolicyBenefits"
+              >
+                <div *ngIf="addBenefit.Type == 1">
+                  {{ addBenefit.description }}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="py-2">
+            <h5 class="color-7e font-4 font-sf-m">Price details</h5>
+            <table style="width:100%">
+              <tr class="py-2">
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">
+                    Basic Prime
+                  </h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.BasicPremium > 0
+                      ? policy.PolicyDetails.PriceDetails.BasicPremium + " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">
+                    No Claim Discount
+                  </h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.NoClaimDiscount > 0
+                      ? policy.PolicyDetails.PriceDetails.NoClaimDiscount +
+                        " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">Value Added Tax (VAT)</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.ValueAddedTax > 0
+                      ? policy.PolicyDetails.PriceDetails.ValueAddedTax + " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">Additional loading</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.AdditionalLoading > 0
+                      ? policy.PolicyDetails.PriceDetails.AdditionalLoading +
+                        " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">Additional Age Contribution</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.LoyaltyDiscount > 0
+                      ? policy.PolicyDetails.PriceDetails.LoyaltyDiscount +
+                        " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">Special Discount</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.SpecialDiscount > 0
+                      ? policy.PolicyDetails.PriceDetails.SpecialDiscount +
+                        " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">Loyalty Discount</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails
+                      .AdditionalAgeContribution > 0
+                      ? policy.PolicyDetails.PriceDetails
+                          .AdditionalAgeContribution + " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">Admin Fees</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.AdminFees > 0
+                      ? policy.PolicyDetails.PriceDetails.AdminFees + " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td class="font-sf-m color-2 font-3">
+                  <h6 class="m-0">FAL Commission</h6>
+                </td>
+                <td class="font-sf-m color-2 font-5">
+                  {{
+                    policy.PolicyDetails.PriceDetails.faLcommetion > 0
+                      ? policy.PolicyDetails.PriceDetails.faLcommetion + " SAR"
+                      : "-"
+                  }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-12 p-d">
+      <h6 class="color-2 font-10 font-sf-sb">Policyholder Details</h6>
+      <div class="bg-ff px-3 py-4">
+        <div class="d-flex justify-content-between">
+          <h5 class="color-7e font-6 font-sf-m">Policyholder ID:</h5>
+          <h4 class="color-2 font-8 font-sf-m w-50">
+            {{ policy.PolicyHolderDetails.NationalID }}
+          </h4>
+        </div>
+        <div class="d-flex justify-content-between">
+          <h5 class="color-7e font-6 font-sf-m">Name:</h5>
+          <h4 class="color-2 font-8 font-sf-m w-50">
+            {{ policy.PolicyHolderDetails.Name }}
+          </h4>
+        </div>
+        <div class="d-flex justify-content-between">
+          <h5 class="color-7e font-6 font-sf-m">National Address:</h5>
+          <h4 class="color-2 font-8 font-sf-m w-50">
+            {{ policy.PolicyHolderDetails.NationalAddress }}
+          </h4>
+        </div>
+      </div>
+      <h6 class="color-2 font-10 font-sf-sb pt-4">Vehicle Details</h6>
+      <div class="bg-ff px-3 pt-4 vehicle">
+        <div class="d-flex justify-content-between pb-4">
+          <h5 class="color-7e font-6 font-sf-m">Vehicle Description:</h5>
+          <h4 class="color-2 font-8 font-sf-m w-50">
+            {{ policy.VehicleDetails.Maker }} -
+            {{ policy.VehicleDetails.Model }}
+          </h4>
+        </div>
+        <div class="d-flex justify-content-between pb-4">
+          <h5 class="color-7e font-6 font-sf-m">Plate number:</h5>
+          <h4 class="color-2 font-8 font-sf-m w-50">
+            {{ policy.VehicleDetails.PlateNumber }}
+          </h4>
+        </div>
+        <div class="d-flex justify-content-between pb-4">
+          <h5 class="color-7e font-6 font-sf-m">Color:</h5>
+          <h4 class="color-2 font-8 font-sf-m w-50">
+            {{ policy.VehicleDetails.Color }}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="policy.PolicyDetails.PolicyDrivers" class="col-md-12 pt-4 ">
+      <h6 class="color-2 font-10 font-sf-sb">Drivers Details</h6>
+      <div class="bg-ff px-2 py-3">
+        <div *ngFor="let driver of policy.PolicyDetails.PolicyDrivers">
+          <div class="bg-fafa row m-0 mb-2">
+            <div class="col pt-2">
+              <h5 class="color-7e font-4 font-sf-m">Driver name</h5>
+              <h4 class="color-2 font-4 font-sf-m">
+                {{ driver.Name }}
+              </h4>
+            </div>
+            <div class="col pt-2">
+              <h5 class="color-7e font-4 font-sf-m">National ID</h5>
+              <h4 class="color-2 font-4 font-sf-m">
+                {{ driver.DriverIDNumber }}
+              </h4>
+            </div>
+            <div class="col pt-2">
+              <h5 class="color-7e font-4 font-sf-m">Date of birth</h5>
+              <h4 class="color-2 font-4 font-sf-m">
+                {{ driver.DriverBirthDate }}
+              </h4>
+            </div>
+            <div class="col pt-2 last-s">
+              <h5 class="color-7e font-4 font-sf-m">Driving Percentage</h5>
+              <h4 class="color-2 font-4 font-sf-m">
+                {{ driver.DrivingPercentage }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="ibanForm">
+    <div
+      class=" text-left mt-4"
+      *ngIf="policy.PolicyDetails.InsuranceType === 'Comprehensive'"
+    >
+      <h6 class="color-2 font-10 font-sf-sb mb-3">
+        Comprehensive Requirements
+      </h6>
+      <div class="bg-ff p-3">
+        <div class="row m-0 v-images">
+          <app-vehicle-img
+            id="app-vehicle-img"
+            class="col col-12"
+            *ngFor="let img of imgs"
+            [img]="img"
+            [payCheck]="payCheck"
+            [uploaded]="checkUploaded"
+          ></app-vehicle-img>
+        </div>
+        <div class="col-md-11 p-3">
+          <mat-checkbox
+            [disabled]="payCheck"
+            formControlName="imgscheck"
+            id="policy-check"
+            (change)="checkingImgs($event)"
+          >
+            <span class="font-msb color-77 font-4 font-sfd-r">
+              I hereby declare that the vehicle images are of my vehicle, were
+              taken recently and have not been amended in any way. I accept that
+              the false declaration could affect any claims or
+              <br />
+              invalidate my policy.</span
+            >
+            <mat-error *ngIf="f.imgscheck.errors?.required">
+              Field is required</mat-error
+            >
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class=" mt-4 text-left">
+      <h6 class="color-2 font-10 font-sf-sb mb-3">
+        IBAN (International Bank Account Number)
+      </h6>
+      <div class="bg-ff p-3 row mx-0">
+        <p class="color-2 font-sf-r font-5">
+          Dear Customer, in compliance with SAMA requirements and protect your
+          rights in case of refund for policy cancellation. Please provide your
+          bank account IBAN number below:
+        </p>
+        <mat-form-field class="col-md-4 col-12">
+          <span matPrefix>SA &nbsp;</span>
+          <mat-label>Enter your IBAN</mat-label>
+          <input
+            formControlName="iban"
+            id="iban"
+            [attr.disabled]="payCheck ? 'payCheck' : null"
+            type="text"
+            minLength="22"
+            maxlength="22"
+            matInput
+            onKeyPress="if(this.value.length==22)return false;"
+          />
+          <mat-error
+            *ngIf="
+              (!f.iban.errors?.pattern && f.iban.errors?.minlength) ||
+              (!f.iban.errors?.pattern && f.iban.errors?.maxlength)
+            "
+            >Field is 22 number</mat-error
+          >
+          <mat-error *ngIf="f.iban.errors?.pattern">Invaid Field</mat-error>
+          <mat-error *ngIf="f.iban.errors?.required"
+            >Field is required</mat-error
+          >
+          <mat-error *ngIf="!f.iban.valid && !f.iban.errors?.pattern && !((!f.iban.errors?.pattern && f.iban.errors?.minlength) ||
+              (!f.iban.errors?.pattern && f.iban.errors?.maxlength)) ">please add a valid IBAN</mat-error>
+        </mat-form-field>
+        <div class="col-md-8 font-sf-b font-6 py-3">
+          {{ this.bank }}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
